@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javax.swing.JFileChooser;
 
 /**
@@ -68,6 +69,33 @@ public class Import_mp3Controller implements Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
+    {
+        
+    }
+
+    
+    
+
+    @FXML
+    private void addSong(ActionEvent event) 
+    {
+        
+    }
+    
+    @FXML
+    private void moreCat(ActionEvent event) 
+    {
+        
+    }
+    
+    @FXML
+    private void chooseSong(ActionEvent event) 
+    {
+        
+    }
+    
+    @FXML
+    private void addCancel(ActionEvent event) 
     {
         
     }
