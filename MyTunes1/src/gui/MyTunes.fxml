@@ -110,4 +110,7 @@
       <Text layoutX="302.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favourites" />
       <Text layoutX="527.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" />
     </children>
+   <effect>
+      <InnerShadow />
+   </effect>
 </AnchorPane>
