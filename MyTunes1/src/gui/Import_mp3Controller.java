@@ -25,13 +25,23 @@ public class Import_mp3Controller implements Initializable
 {
 
     @FXML
-    private Button More;
+    private TextField title;
     @FXML
-    private Button Choose;
+    private Button btnMore;
     @FXML
-    private Button Save;
+    private Button btnChoose;
     @FXML
-    private Button Cancel;
+    private Button btnSave;
+    @FXML
+    private TextField artist;
+    @FXML
+    private TextField time;
+    @FXML
+    private TextField category;
+    @FXML
+    private TextField file;
+    @FXML
+    private Button btnCancel;
 
 
     //cancel application

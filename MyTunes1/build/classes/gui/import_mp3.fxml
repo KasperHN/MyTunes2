@@ -16,15 +16,15 @@
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <Button fx:id="More" layoutX="255.0" layoutY="90.0" mnemonicParsing="false" text="More...">
+            <Button fx:id="btnMore" layoutX="255.0" layoutY="90.0" mnemonicParsing="false" text="More...">
                <effect>
                   <InnerShadow />
                </effect></Button>
-            <Button fx:id="Choose" layoutX="369.0" layoutY="150.0" mnemonicParsing="false" text="Choose">
+            <Button fx:id="btnChoose" layoutX="369.0" layoutY="150.0" mnemonicParsing="false" text="Choose">
                <effect>
                   <InnerShadow />
                </effect></Button>
-            <Button fx:id="Save" layoutX="397.0" layoutY="202.0" mnemonicParsing="false" text="Save">
+            <Button fx:id="btnSave" layoutX="397.0" layoutY="202.0" mnemonicParsing="false" text="Save">
                <effect>
                   <InnerShadow />
                </effect></Button>
@@ -48,7 +48,7 @@
                   <InnerShadow />
                </effect></TextField>
             <Label layoutX="33.0" layoutY="154.0" prefHeight="18.0" prefWidth="41.0" text="File:" />
-            <Button fx:id="Cancel" layoutX="335.0" layoutY="202.0" mnemonicParsing="false" text="Cancel">
+            <Button fx:id="btnCancel" layoutX="335.0" layoutY="202.0" mnemonicParsing="false" text="Cancel">
                <effect>
                   <InnerShadow />
                </effect></Button>
