@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MyTunes1.jnlp">
+<?xml version="1.0" encoding="UTF-8"?><jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MyTunes2.jnlp">
     <information>
-        <title>MyTunes1</title>
+        <title>MyTunes2</title>
         <vendor>kaspe</vendor>
         <description>null</description>
         <offline-allowed/>
@@ -8,7 +8,7 @@
     <update check="always"/>
     <resources>
         <j2se version="9.0.4+" href="http://java.sun.com/products/autodl/j2se"/>
-        <jar href="MyTunes1.jar" size="8824" download="eager"/>
+        <jar href="MyTunes2.jar" size="8826" download="eager"/>
         <jar href="lib\jl1.0.1.jar" size="105363" download="eager"/>
         <jar href="lib\mssql-jdbc-6.3.6-SNAPSHOT.jre9-preview.jar" size="876102" download="eager"/>
     </resources>
