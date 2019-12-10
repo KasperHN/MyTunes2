@@ -46,7 +46,7 @@ public class Import_mp3Controller implements Initializable
 
 
     //cancel application
-//    private void CancelApplication(java.awt.event.ActionEvent evt) 
+//    private void CancelApplication(); 
 //    {
 //        System.exit(0);
 //    } 
@@ -97,7 +97,7 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private void addCancel(ActionEvent event) 
     {
-        
+        System.exit(0);
     }
 }
 

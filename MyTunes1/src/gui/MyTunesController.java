@@ -95,7 +95,6 @@ public class MyTunesController implements Initializable {
     private void playSong() throws JavaLayerException 
     {
         musicPlayer.play();
-        
     }
 
     @FXML
@@ -110,6 +109,7 @@ public class MyTunesController implements Initializable {
         musicPlayer.pause();
     }
 
+    @FXML
     private void resumeSong() 
     {
         musicPlayer.resume();
