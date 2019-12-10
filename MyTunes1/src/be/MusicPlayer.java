@@ -18,7 +18,7 @@ import javazoom.jl.player.AudioDevice;
 public class MusicPlayer
 {
     public final static int NOTSTARTED = 0;
-    public final static int PLAYING = 1;
+    public final static int PLAYING = 1; 
     public final static int PAUSED = 2;
     public final static int FINISHED = 3;
 
