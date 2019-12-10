@@ -82,7 +82,7 @@ public class Import_mp3Controller implements Initializable
     
 
     @FXML
-    private void addSong(ActionEvent event) 
+    private void addSong(ActionEvent event, int i) 
     {
 //        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
 //        String name = nameField.getText().trim();

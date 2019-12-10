@@ -32,7 +32,8 @@ private MusicPlayer song1=null, song2=null, song3=null, song4=null;
     {
         this.console = new Scanner(System.in);
     }
-private MusicPlayer getFromUser() 
+    
+    private MusicPlayer getFromUser() 
     {
         MusicPlayer song = new Song();
         System.out.println("Name of song:");
@@ -47,7 +48,8 @@ private MusicPlayer getFromUser()
         System.out.println("");
         return song;
     }
-public void addNewSong()
+    
+    public void addNewSong()
     {        
         if (song1 == null) 
         {
@@ -70,8 +72,9 @@ public void addNewSong()
             System.out.println("The database is currently full. Please delete a song before adding a new one.");
             System.out.println("");
         }    
-}
-public Song getSong(int songNumber) 
+    }
+    
+    public Song getSong(int songNumber) 
     {
         if (songNumber == 1){
             return song1;
