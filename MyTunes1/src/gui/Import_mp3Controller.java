@@ -6,6 +6,7 @@
 package gui;
 
 import be.MusicPlayer;
+import be.SongModel;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
@@ -37,11 +38,11 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private Button btnSave;
     @FXML
-    private TextField artist;
+    private TextField artistField;
     @FXML
     private TextField time;
     @FXML
-    private TextField category;
+    private TextField categoryChoice;
     @FXML
     private TextField file;
     @FXML
@@ -83,17 +84,21 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private void addSong(ActionEvent event) 
     {
-        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
-        String name = nameField.getText().trim();
-        if (name != null && name.length() > 0 && name.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) { 
-            if (!isEditing) { 
-                songModel.createSong(name, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+//        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
+//        String name = nameField.getText().trim();
+        if (title != null && title.getlength() > 0 && title.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) 
+        { 
+            if (!isEditing) 
+            { 
+                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
                 errorLabel.setText("Success: Successfully created the song");
-            } else {
-                songModel.updateSong(songToEdit, name, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+            } else 
+            {
+                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
                 errorLabel.setText("Success: Successfully updated the song");
             }
-        } else {
+        } else 
+        {
             errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
         }
 

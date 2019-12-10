@@ -12,7 +12,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="274.0" prefWidth="458.0" VBox.vgrow="ALWAYS">
       <children>
             <Label layoutX="33.0" layoutY="36.0" prefHeight="18.0" prefWidth="41.0" text="Title:" />
-            <TextField fx:id="title" layoutX="90.0" layoutY="30.0" prefHeight="26.0" prefWidth="354.0">
+            <TextField fx:id="songTitle" layoutX="90.0" layoutY="30.0" onKeyTyped="#urlField" prefHeight="26.0" prefWidth="354.0">
                <effect>
                   <InnerShadow />
                </effect></TextField>
@@ -56,6 +56,7 @@
                   <InnerShadow />
                </effect>
             </Button>
+            <Label fx:id="errorLabel" layoutX="33.0" layoutY="202.0" prefHeight="25.0" prefWidth="177.0" text="Label" />
       </children>
          <effect>
             <InnerShadow />

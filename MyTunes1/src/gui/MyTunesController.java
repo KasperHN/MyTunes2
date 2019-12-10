@@ -79,7 +79,6 @@ public class MyTunesController implements Initializable {
     }
     
     private void pause() throws JavaLayerException 
-    
     {
             if (playerStatus == PLAYING) 
             {
@@ -140,8 +139,6 @@ public class MyTunesController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("import_mp3.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-//            stage.initModality(Modality.APPLICATION_MODAL);
-//            stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("addSong");
             stage.setScene(new Scene(root1));  
             stage.show();
@@ -151,8 +148,4 @@ public class MyTunesController implements Initializable {
                 e.printStackTrace();
             }
     }
-        
-
-    
-    
 }
