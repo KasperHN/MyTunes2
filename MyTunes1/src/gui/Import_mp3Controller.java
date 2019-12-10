@@ -5,6 +5,7 @@
  */
 package gui;
 
+import be.MusicPlayer;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
@@ -13,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -44,7 +46,8 @@ public class Import_mp3Controller implements Initializable
     private TextField file;
     @FXML
     private Button btnCancel;
-
+    @FXML
+    private Label errorLabel;
 
     //cancel application
 //    private void CancelApplication(); 
@@ -80,7 +83,21 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private void addSong(ActionEvent event) 
     {
-        
+        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
+        String name = nameField.getText().trim();
+        if (name != null && name.length() > 0 && name.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) { 
+            if (!isEditing) { 
+                songModel.createSong(name, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+                errorLabel.setText("Success: Successfully created the song");
+            } else {
+                songModel.updateSong(songToEdit, name, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+                errorLabel.setText("Success: Successfully updated the song");
+            }
+        } else {
+            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
+        }
+
+        controller1.refreshSongList(isEditing); 
     }
     
     @FXML
