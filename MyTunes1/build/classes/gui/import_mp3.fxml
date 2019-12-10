@@ -36,22 +36,30 @@
                   <InnerShadow />
                </effect></TextField>
             <Label layoutX="33.0" layoutY="154.0" prefHeight="18.0" prefWidth="41.0" text="File:" />
+
             <Button fx:id="btnMore" defaultButton="true" layoutX="257.0" layoutY="90.0" mnemonicParsing="false" onAction="#moreCat" prefHeight="23.0" prefWidth="96.0" text="More..." textFill="#9f0909">
+
                <effect>
                   <InnerShadow />
                </effect>
             </Button>
+
             <Button fx:id="btnChoose" defaultButton="true" layoutX="372.0" layoutY="150.0" mnemonicParsing="false" onAction="#chooseSong" prefHeight="26.0" prefWidth="72.0" text="Choose" textFill="#9f0909">
+
                <effect>
                   <InnerShadow />
                </effect>
             </Button>
+
             <Button fx:id="btnCancel" defaultButton="true" layoutX="244.0" layoutY="202.0" mnemonicParsing="false" onAction="#addCancel" prefHeight="23.0" prefWidth="96.0" text="Cancel" textFill="#9f0909">
+
                <effect>
                   <InnerShadow />
                </effect>
             </Button>
+
             <Button fx:id="btnSave" defaultButton="true" layoutX="353.0" layoutY="202.0" mnemonicParsing="false" onAction="#addSong" prefHeight="23.0" prefWidth="96.0" text="Save" textFill="#9f0909">
+
                <effect>
                   <InnerShadow />
                </effect>
