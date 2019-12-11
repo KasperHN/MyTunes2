@@ -1,4 +1,4 @@
 serverName=10.176.111.31
 user=CSe19A_7
 password=CSe19A_7
-database=SuperCoolMyTunes
+database=NJJCMyTunes

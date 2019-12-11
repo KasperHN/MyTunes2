@@ -18,8 +18,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.swing.JFileChooser;
+
 
 /**
  * FXML Controller class
@@ -86,15 +88,16 @@ public class Import_mp3Controller implements Initializable
     {
 //        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
 //        String name = nameField.getText().trim();
-        if (title != null && title.length() > 0 && title.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) 
+        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
         { 
             if (!isEditing) 
             { 
-                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
                 errorLabel.setText("Success: Successfully created the song");
-            } else 
+            } 
+            else 
             {
-                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, urlField.getText());
+                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
                 errorLabel.setText("Success: Successfully updated the song");
             }
         } else 
@@ -114,7 +117,17 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private void chooseSong(ActionEvent event) 
     {
-        
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator") + "Desktop")); //Sets the directory to the desktop
+        fileChooser.setTitle("Select song");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) 
+        {
+            title.setText(selectedFile.getAbsolutePath());    
+        }
     }
     
     @FXML
