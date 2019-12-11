@@ -80,7 +80,7 @@ public class SongModel
 //    }
     
        
-    private ObservableList<Song> allSongs = FXCollections.observableArrayList();
+    private ObservableList<SongModel> allSongs = FXCollections.observableArrayList();
 
     private final LogicFacade logiclayer;
    
@@ -88,7 +88,7 @@ public class SongModel
     /*
     Gets all existing songs
     */
-    public ObservableList<Song> getSongs() 
+    public ObservableList<SongModel> getSongs() 
     {
         allSongs = FXCollections.observableArrayList();
         allSongs.addAll(logiclayer.getAllSongs());
