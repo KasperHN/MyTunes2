@@ -9,6 +9,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -36,4 +37,15 @@ public class DatabaseConnector
         return dataSource.getConnection();
     }
 
+    public SongDAO() throws IOException 
+    {
+        this.dataSource = new SQLServerDataSource();
+        DatabaseConnector connectionInfo = new DatabaseConnector();
+        List<String> infoList = connectionInfo.getDatabaseInfo();
+        dataSource.setDatabaseName(infoList.get(0));
+        dataSource.setUser(infoList.get(1));
+        dataSource.setPassword(infoList.get(2));
+        dataSource.setPortNumber(Integer.parseInt(infoList.get(3)));
+        dataSource.setServerName(infoList.get(4));
+    }
 }
