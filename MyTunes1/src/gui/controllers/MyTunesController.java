@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package gui.controllers;
 import be.MusicPlayer;
 import static be.MusicPlayer.NOTSTARTED;
 import static be.MusicPlayer.FINISHED;
