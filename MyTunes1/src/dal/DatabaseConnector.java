@@ -40,17 +40,7 @@ public class DatabaseConnector
         return dataSource.getConnection();
     }
 
-    public SongDAO() throws IOException 
-    {
-        this.dataSource = new SQLServerDataSource();
-        DatabaseConnector connectionInfo = new DatabaseConnector();
-        List<String> infoList = connectionInfo.getDatabaseInfo();
-        dataSource.setDatabaseName(infoList.get(0));
-        dataSource.setUser(infoList.get(1));
-        dataSource.setPassword(infoList.get(2));
-        dataSource.setPortNumber(Integer.parseInt(infoList.get(3)));
-        dataSource.setServerName(infoList.get(4));
-    }
+    
 
     public List<String> getDatabaseInfo() throws IOException 
     {

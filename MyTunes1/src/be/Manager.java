@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import javafx.collections.ObservableList;
 import be.SongModel;
+import bll.LogicFacade;
 import bll.SongFilter;
 import dal.CategoriesDAO;
 import dal.PlaylistDAO;
@@ -65,10 +66,10 @@ public class Manager implements LogicFacade {
         songDAO.deleteSong(songToDelete); // Deletes song from song table
     }
 
-    @Override
-    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
-        return songDAO.updateSong(song, title, artist, category, playtime, location);
-    }
+//    @Override
+//    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
+//        return songDAO.updateSong(song, title, artist, category, playtime, location);
+//    }
 
     @Override
     public Playlist createPlaylist(String name) {
@@ -76,12 +77,12 @@ public class Manager implements LogicFacade {
     }
 
     @Override
-    public SongModel addToPlaylist(Playlist playlist, Song song) {
+    public SongModel addToPlaylist(Playlist playlist, SongModel song) {
         return PlaylistSongInfo.addToPlaylist(playlist, song);
     }
 
     @Override
-    public void removeSongFromPlaylist(Playlist selectedItem, Song selectedSong) {
+    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
         PlaylistSongInfo.removeSongFromPlaylist(selectedItem, selectedSong);
     }
 
@@ -91,12 +92,12 @@ public class Manager implements LogicFacade {
     }
 
     @Override
-    public void editSongPosition(Playlist selectedItem, Song selected, Song exhangeWith) {
+    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
         PlaylistSongInfo.editSongPosition(selectedItem, selected, exhangeWith);
     }
 
     @Override
-    public ObservableList<Song> search(ObservableList<Song> items, String text) {
+    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) {
         return songSearcher.search(items, text);
     }
 

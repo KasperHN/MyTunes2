@@ -13,6 +13,7 @@
 
 package be;
 
+import bll.LogicFacade;
 import java.io.IOException;
 import java.util.Scanner;
 import javafx.collections.FXCollections;
@@ -82,7 +83,7 @@ public class SongModel
        
     private ObservableList<SongModel> allSongs = FXCollections.observableArrayList();
 
-    private final LogicFacade logiclayer;
+    private LogicFacade logiclayer;
    
 
     /*

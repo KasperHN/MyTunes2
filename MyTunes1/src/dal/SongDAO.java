@@ -110,27 +110,27 @@ public class SongDAO {
     /*
     Updates song in the database with the new specifics given by the user
      */
-    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
-        try (Connection con = ds.getConnection()) {
-            String query = "UPDATE Song set name = ?,artist = ?,category = ?,time = ?,url = ? WHERE id = ?";
-            PreparedStatement preparedStmt = con.prepareStatement(query);
-            preparedStmt.setString(1, title);
-            preparedStmt.setString(2, artist);
-            preparedStmt.setString(3, category);
-            preparedStmt.setInt(4, playtime);
-            preparedStmt.setString(5, location);
-            preparedStmt.setInt(6, song.getID());
-            preparedStmt.executeUpdate();
-            SongModel song = new SongModel(title, artist, category, playtime, location, songModel.getID()); //creates a new song object.
-            return song;
-        } catch (SQLServerException ex) {
-            System.out.println(ex);
-            return null;
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            return null;
-        }
-    }
+//    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
+//        try (Connection con = ds.getConnection()) {
+//            String query = "UPDATE Song set name = ?,artist = ?,category = ?,time = ?,url = ? WHERE id = ?";
+//            PreparedStatement preparedStmt = con.prepareStatement(query);
+//            preparedStmt.setString(1, title);
+//            preparedStmt.setString(2, artist);
+//            preparedStmt.setString(3, category);
+//            preparedStmt.setInt(4, playtime);
+//            preparedStmt.setString(5, location);
+//            preparedStmt.setInt(6, song.getID());
+//            preparedStmt.executeUpdate();
+//            SongModel song = new SongModel(title, artist, category, playtime, location, song.getID()); //creates a new song object.
+//            return song;
+//        } catch (SQLServerException ex) {
+//            System.out.println(ex);
+//            return null;
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//            return null;
+//        }
+//    }
 
     /*
     Deletes specified song from the database.

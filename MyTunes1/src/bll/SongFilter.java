@@ -22,7 +22,7 @@ public class SongFilter
     /*
     Searches trough all song titles and gets all items that start with specifies string
      */
-    public ObservableList<SongModel> search(ObservableList<Song> items, String text) {
+    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) {
         temp.clear();
         for (SongModel item : items) {
             if (item.getTitle().toLowerCase().startsWith(text.toLowerCase())) {

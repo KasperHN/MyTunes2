@@ -149,7 +149,7 @@ public class PlaylistSongDAO {
     /*
     Switches the song positions in the list but using batch proccesses.
      */
-    public void editSongPosition(Playlist selectedItem, Song selected, Song exhangeWith) {
+    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
         try (Connection con = ds.getConnection()) {
             String query = "UPDATE PlaylistSong set locationInListID = ? WHERE PlaylistID = ? AND SongID = ? AND locationInListID = ? ";
             PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -177,7 +177,7 @@ public class PlaylistSongDAO {
     /*
     Removes a specific song from playlist.
      */
-    public void removeSongFromPlaylist(Playlist selectedItem, Song selectedSong) {
+    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
         try (Connection con = ds.getConnection()) {
             String query = "DELETE from PlaylistSong WHERE PlaylistID = ? AND SongID = ? AND locationInListID = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
