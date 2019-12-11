@@ -86,7 +86,7 @@ public class Import_mp3Controller implements Initializable
     {
 //        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
 //        String name = nameField.getText().trim();
-        if (title != null && title.getlength() > 0 && title.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) 
+        if (title != null && title.length() > 0 && title.length() < 50 && urlField.getText() != null && urlField.getText().length() != 0 && i > 0) 
         { 
             if (!isEditing) 
             { 

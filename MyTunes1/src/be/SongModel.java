@@ -28,68 +28,62 @@ import javazoom.jl.decoder.Manager;
 
 public class SongModel 
 {
-Scanner console;  
-
-private MusicPlayer song1=null, song2=null, song3=null, song4=null;
-
-    public SongModel() 
-    {
-        this.console = new Scanner(System.in);
-    }
-    
-    private MusicPlayer getFromUser() 
-    {
-        MusicPlayer song = new Song();
-        System.out.println("Name of song:");
-        song.setName(console.next());
-        System.out.println("Artist:");
-        song.setArtist(console.next());
-        System.out.println("File size (MB):");
-        song.setFileSize(console.nextInt());
-        System.out.println("Duration (seconds):");
-        song.setDuration(console.nextInt());
-        System.out.println("Song successfully added.");
-        System.out.println("");
-        return song;
-    }
-    
-    public void addNewSong()
-    {        
-        if (song1 == null) 
-        {
-            song1 = getFromUser();
-        }
-        else if (song2 == null) 
-        {
-            song2 = getFromUser();
-        }    
-        else if (song3 == null) 
-        {
-            song3 = getFromUser();
-        }
-        else if (song4 == null) 
-        {
-            song4 = getFromUser();
-        }
-        else 
-        {
-            System.out.println("The database is currently full. Please delete a song before adding a new one.");
-            System.out.println("");
-        }    
-    }
+//Scanner console;  
+//
+//private MusicPlayer song1=null, song2=null, song3=null, song4=null;
+//
+//    public SongModel() 
+//    {
+//        this.console = new Scanner(System.in);
+//        logiclayer = (LogicFacade) new Manager();
+//    }
+//    
+//    private MusicPlayer getFromUser() 
+//    {
+//        MusicPlayer song = new Song();
+//        System.out.println("Name of song:");
+//        song.setName(console.next());
+//        System.out.println("Artist:");
+//        song.setArtist(console.next());
+//        System.out.println("File size (MB):");
+//        song.setFileSize(console.nextInt());
+//        System.out.println("Duration (seconds):");
+//        song.setDuration(console.nextInt());
+//        System.out.println("Song successfully added.");
+//        System.out.println("");
+//        return song;
+//    }
+//    
+//    public void addNewSong()
+//    {        
+//        if (song1 == null) 
+//        {
+//            song1 = getFromUser();
+//        }
+//        else if (song2 == null) 
+//        {
+//            song2 = getFromUser();
+//        }    
+//        else if (song3 == null) 
+//        {
+//            song3 = getFromUser();
+//        }
+//        else if (song4 == null) 
+//        {
+//            song4 = getFromUser();
+//        }
+//        else 
+//        {
+//            System.out.println("The database is currently full. Please delete a song before adding a new one.");
+//            System.out.println("");
+//        }    
+//    }
     
        
     private ObservableList<Song> allSongs = FXCollections.observableArrayList();
 
     private final LogicFacade logiclayer;
-
-    /*
-    Initialises the constructor and the logic layer
-    */
-    public SongModel() throws IOException 
-    {
-        logiclayer = (LogicFacade) new Manager();
-    }
+   
 
     /*
     Gets all existing songs
