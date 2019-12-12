@@ -28,9 +28,9 @@ import javafx.stage.Stage;
 import javazoom.jl.decoder.JavaLayerException;
 
 /**
- * FXML Controller class
+ * FXML kontrol klasse
  *
- * @author kaspe
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class MyTunesController implements Initializable {
 
@@ -59,7 +59,7 @@ public class MyTunesController implements Initializable {
     
             
     /**
-     * Initializes the controller class.
+     * Starter kontrol klasse
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -114,18 +114,6 @@ public class MyTunesController implements Initializable {
         musicPlayer.resume();
     }
     
-    
-//    @FXML
-//    private void skipSong() 
-//    {
-//        musicPlayer.skip();
-//    }
-
-//    @FXML
-//    private void prevSong() 
-//    {
-//        musicPlayer.prev();
-//    }
 
     @FXML
     private void addSong(ActionEvent event) 

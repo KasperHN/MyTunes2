@@ -24,9 +24,9 @@ import javafx.stage.Stage;
 
 
 /**
- * FXML Controller class
+ * FXML Controller klasse
  *
- * @author chri9
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class Import_mp3Controller implements Initializable 
 {
@@ -51,28 +51,6 @@ public class Import_mp3Controller implements Initializable
     private Button btnCancel;
     @FXML
     private Label errorLabel;
-
-    //cancel application
-//    private void CancelApplication(); 
-//    {
-//        System.exit(0);
-//    } 
-//
-//
-//    //save and open file
-//    private void OpenAndFindFile(java.awt.event.ActionEvent evt) 
-//    {
-//        JFileChooser fileChooser = new JFileChooser();
-//        fileChooser.setDialogTitle("Specify a file to save");
-// 
-//        int OpenAndFindFile = fileChooser.showSaveDialog(parentFrame);
-// 
-//        if (SaveFile == JFileChooser.APPROVE_OPTION) 
-//        {
-//        File fileToSave = fileChooser.getSelectedFile();
-//        System.out.println("Save as file: " + fileToSave.getAbsolutePath());
-//        }
-//    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources)

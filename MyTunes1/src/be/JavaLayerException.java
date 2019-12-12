@@ -7,7 +7,7 @@
 
 /**
  *
- * @author jonas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 class JavaLayerException extends Exception {
     

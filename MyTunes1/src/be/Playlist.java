@@ -9,15 +9,15 @@ import java.util.List;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class Playlist {
 
-    private List<SongModel> songList; //List of songs in the playlist
-    private int songCount; // Total count of songs in the playlist
-    private int totalTime; // Total time of all songs in the playlist
-    private final String totalTimeString; // Total time but in an hour:minute:second format as a string
-    private String name; // Name of playlist
+    private List<SongModel> songList; //Playlist
+    private int songCount; // Antal sange i Playlist
+    private int totalTime; // Total tid af sange på playliste
+    private final String totalTimeString; //Samme som overstående men i  hour:minute:second format
+    private String name; // Navn på playliste
     private final int ID; // Unique playlist ID
 
     public Playlist(int songCount, int totalTime, String name, int ID) {
@@ -28,7 +28,8 @@ public class Playlist {
         this.ID = ID;
     }
 
-    public int getID() {
+    public int getID() 
+    {
         return ID;
     }
 
@@ -70,7 +71,7 @@ public class Playlist {
     }
 
     /*
-    Converts seconds to hours, minute and seconds and puts it as a string
+    Konverterer sange til minutter sekunder og timer.
      */
     public String getTotalTimeString() {
         String minutesString;

@@ -19,14 +19,14 @@ import be.SongModel;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class SongDAO {
 
     SQLServerDataSource ds;
 
     /*
-    Initialises the constructor. Also gets the database information from DatabaseConnectionDAO and sets up the connectio for the whole class.
+    Starter constructoren. Getter også informationen fra DatabaseConnectionDAO og samler hele klassen.
      */
     public SongDAO() throws IOException {
         this.ds = new SQLServerDataSource();
@@ -40,7 +40,7 @@ public class SongDAO {
     }
 
     /*
-    Gets all songs in the database
+    Getter alle sange i databasen.
      */
     public List<SongModel> getAllSongs() {
         List<SongModel> allSongs = new ArrayList<>();
@@ -48,11 +48,11 @@ public class SongDAO {
             String sqlStatement = "SELECT * FROM Song";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
-            while (rs.next()) { // Creates and adds song objects into an array list
+            while (rs.next()) { // Skaber og tilføjer sang objecter til array listen.
                 SongModel song = new SongModel(rs.getString("name"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"), rs.getString("url"), rs.getInt("id"));
                 allSongs.add(song);
             }
-            return allSongs; //Returns the full list
+            return allSongs; //Returnere en fuld liste.
         } catch (SQLServerException ex) {
             System.out.println(ex);
             return null;
@@ -63,7 +63,7 @@ public class SongDAO {
     }
 
     /*
-    Creates a song and inserts it into the database
+    Laver en sang og tilføjer den til databasen.
      */
     public SongModel createSong(String title, String artist, String category, int playtime, String location) {
         String sql = "INSERT INTO Song(name,artist,category,time,url) VALUES (?,?,?,?,?)";
@@ -81,17 +81,17 @@ public class SongDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        SongModel song = new SongModel(title, artist, category, playtime, location, getNewestSongID()); // Creates a song object
-        return song; //Returns the song object
+        SongModel song = new SongModel(title, artist, category, playtime, location, getNewestSongID()); //Laver et sang object
+        return song; //Returnere sang objected
     }
 
     /*
-    Gets the top songs ID from the database so it is possible to create the song object
+    Getter top sang IDerne fra databasen så det er muligt at skabe sang objected.
      */
     private int getNewestSongID() {
-        int newestID = -1; // Default ID not found
+        int newestID = -1; // Vidkårligt ID ikke fundet.
         try (Connection con = ds.getConnection()) {
-            String query = "SELECT TOP(1) * FROM Song ORDER by id desc"; //Selects the biggest song ID in the database
+            String query = "SELECT TOP(1) * FROM Song ORDER by id desc"; //Vælg det højeste ID 
             PreparedStatement preparedStmt = con.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
@@ -107,34 +107,6 @@ public class SongDAO {
         }
     }
 
-    /*
-    Updates song in the database with the new specifics given by the user
-     */
-//    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
-//        try (Connection con = ds.getConnection()) {
-//            String query = "UPDATE Song set name = ?,artist = ?,category = ?,time = ?,url = ? WHERE id = ?";
-//            PreparedStatement preparedStmt = con.prepareStatement(query);
-//            preparedStmt.setString(1, title);
-//            preparedStmt.setString(2, artist);
-//            preparedStmt.setString(3, category);
-//            preparedStmt.setInt(4, playtime);
-//            preparedStmt.setString(5, location);
-//            preparedStmt.setInt(6, song.getID());
-//            preparedStmt.executeUpdate();
-//            SongModel song = new SongModel(title, artist, category, playtime, location, song.getID()); //creates a new song object.
-//            return song;
-//        } catch (SQLServerException ex) {
-//            System.out.println(ex);
-//            return null;
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//            return null;
-//        }
-//    }
-
-    /*
-    Deletes specified song from the database.
-     */
     public void deleteSong(SongModel songToDelete) {
         try (Connection con = ds.getConnection()) {
             String query = "DELETE from Song WHERE id = ?";

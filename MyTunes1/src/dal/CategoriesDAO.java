@@ -21,12 +21,12 @@ import be.Playlist;
  *
  * @author nedas
  */
-public class CategoriesDAO { // Initialises the CategoriesDAO class
+public class CategoriesDAO { // Indleder CategoriesDAO Klassen
 
     SQLServerDataSource ds;
 
     /*
-    Initialises the constructor. Gets the array from the DatabaseConnectionDAO and sets up the database so the class can use it.
+    Indleder constructoren. Getter Arraylisten fra DatabaseConnectionDAO og opstiller instillingerne så de kan bruge den.
      */
     public CategoriesDAO() throws IOException {
         this.ds = new SQLServerDataSource();
@@ -40,16 +40,16 @@ public class CategoriesDAO { // Initialises the CategoriesDAO class
     }
 
     public List<String> getAllCategories() {
-        List<String> allCategories = new ArrayList<>(); // Creates a String array to store all categories
+        List<String> allCategories = new ArrayList<>(); // Laver en string for at katogorisere
 
         try (Connection con = ds.getConnection()) {
             String sqlStatement = "SELECT * FROM Catagory";
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) {
-                allCategories.add(rs.getString("name")); // Adds the category to the String array
+                allCategories.add(rs.getString("name")); // Tilføjer katagori til string Array.
             }
-            return allCategories; // Returns the String array
+            return allCategories; // Returnere string array
         } catch (SQLServerException ex) {
             System.out.println(ex);
             return null;
@@ -60,7 +60,7 @@ public class CategoriesDAO { // Initialises the CategoriesDAO class
     }
 
     /*
-    Inserts a new category into Category table
+    Indsætter en ny katagori i katagori tabellen.
      */
     public void createCategory(String name) {
         String sql = "INSERT INTO Catagory VALUES (?)";
@@ -77,7 +77,7 @@ public class CategoriesDAO { // Initialises the CategoriesDAO class
     }
 
     /*
-    Deletes category from Category table
+    Sletter katagori fra katagori tabellen.
      */
     public void deleteCategory(String name) {
         try (Connection con = ds.getConnection()) {

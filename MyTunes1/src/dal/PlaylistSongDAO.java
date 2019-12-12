@@ -26,7 +26,7 @@ public class PlaylistSongDAO {
     SQLServerDataSource ds;
 
     /*
-    Initialises the constructor. Gets the array from the DatabaseConnectionDAO and sets up the database so the class can use it.
+    Opstarter Konstructoren. Getter Arraylisten fra DatabaseConnectionDAO og gør brug af Databasen
      */
     public PlaylistSongDAO() throws IOException {
         this.ds = new SQLServerDataSource();
@@ -40,19 +40,19 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Gets a joint playlist query. Which is used to create a playlist list of songs.
+    Getter playlist køen Som laver playlist af sange.
      */
     public List<SongModel> getPlaylistSongs(int id) {
         List<SongModel> newSongList = new ArrayList();
         try (Connection con = ds.getConnection()) {
-            String query = "SELECT * FROM PlaylistSong INNER JOIN Song ON PlaylistSong.SongID = Song.id WHERE PlaylistSong.PlaylistID = ? ORDER by locationInListID desc"; // Gets all songs from a coresponding playlist.
+            String query = "SELECT * FROM PlaylistSong INNER JOIN Song ON PlaylistSong.SongID = Song.id WHERE PlaylistSong.PlaylistID = ? ORDER by locationInListID desc"; // Henter alle sange fra en playliste
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, id);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
                 SongModel song = new SongModel(rs.getString("name"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"), rs.getString("url"), rs.getInt("id")); // Sets up a song object
-                song.setLocationInList(rs.getInt("locationInListID")); //Inserts location in list int. It is used for updating possition on the ist
-                newSongList.add(song); //adds song to a song array
+                song.setLocationInList(rs.getInt("locationInListID")); // indsætter int lister locationer.
+                newSongList.add(song); //Tilføjer sange til sang array listen.
             }
             return newSongList;
         } catch (SQLServerException ex) {
@@ -65,7 +65,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Removes a specific song from every playlist in the Playlist Song database table. (So the song can be removed from the song database table)
+    Fjerner en specific sang fra aller playlister.
      */
     public void deleteFromPlaylistSongsEverything(SongModel songToDelete) {
         try (Connection con = ds.getConnection()) {
@@ -81,7 +81,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Adds song to playlist 
+    Tilføjer en sang til playliste.
      */
     public SongModel addToPlaylist(Playlist playlist, SongModel song) {
         String sql = "INSERT INTO PlaylistSong(PlaylistID,SongID,locationInListID) VALUES (?,?,?)";
@@ -94,8 +94,8 @@ public class PlaylistSongDAO {
             ps.setInt(3, Id);
             ps.addBatch();
             ps.executeBatch();
-            song.setLocationInList(Id); //sets up new location in list for user to see
-            return song; //Returns song object
+            song.setLocationInList(Id);
+            return song; // returnere sang objecter.
         } catch (SQLServerException ex) {
             System.out.println(ex);
             return null;
@@ -107,7 +107,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Gets newest id inserted into a specific playlist
+    Henter nyeste ID til playliste.
      */
     private int getNewestSongInPlaylist(int id) {
         int newestID = -1;
@@ -131,7 +131,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Deletes playlist from the Playlist song table in database. (It allows playlist to be deleted from playlist table)
+    Sletter en playlist fra en playlist sang tabel i databasen.
      */
     public void deleteFromPlaylistSongsEverything(Playlist play) {
         try (Connection con = ds.getConnection()) {
@@ -147,7 +147,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Switches the song positions in the list but using batch proccesses.
+    Skifter sangens positionerne på listen.
      */
     public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
         try (Connection con = ds.getConnection()) {
@@ -164,9 +164,9 @@ public class PlaylistSongDAO {
             preparedStmt.setInt(4, exhangeWith.getLocationInList());
             preparedStmt.addBatch();
             preparedStmt.executeBatch();
-            int temp = selected.getLocationInList(); // Creates a temporary ID
-            selected.setLocationInList(exhangeWith.getLocationInList()); // switches the first song with exchange song ID
-            exhangeWith.setLocationInList(temp); // Switches exchange song ID with the temporary ID
+            int temp = selected.getLocationInList(); // Laver en midlertidig ID
+            selected.setLocationInList(exhangeWith.getLocationInList());
+            exhangeWith.setLocationInList(temp);
         } catch (SQLServerException ex) {
             System.out.println(ex);
         } catch (SQLException ex) {
@@ -175,7 +175,7 @@ public class PlaylistSongDAO {
     }
 
     /*
-    Removes a specific song from playlist.
+    Fjerner en specific sang fra Playlisten.
      */
     public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
         try (Connection con = ds.getConnection()) {

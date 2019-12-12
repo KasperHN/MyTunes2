@@ -20,15 +20,15 @@ import be.SongModel;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class PlaylistDAO {
 
-    PlaylistSongDAO PlaylistSongInfo = new PlaylistSongDAO(); // Initialises the PlaylistDAO class
+    PlaylistSongDAO PlaylistSongInfo = new PlaylistSongDAO(); // Opstarter PlaylistDAO klassen
     SQLServerDataSource ds;
 
     /*
-    Initialises the constructor. Gets the array from the DatabaseConnectionDAO and sets up the database so the class can use it.
+    Opstarter konstructoren getter array listen for DatabaseConnectionDAO.
      */
     public PlaylistDAO() throws IOException {
         this.ds = new SQLServerDataSource();
@@ -42,10 +42,10 @@ public class PlaylistDAO {
     }
 
     /*
-    Gets all existing playlists from database
+    Henter alle Playlister fra Databasen
      */
     public List<Playlist> getAllPlaylists() {
-        List<Playlist> allPlaylists = new ArrayList<>(); // Creates a playlist array to store all playlists
+        List<Playlist> allPlaylists = new ArrayList<>(); // Tilføjer playliste tabel.
 
         try (Connection con = ds.getConnection()) {
             String sqlStatement = "SELECT * FROM Playlist";
@@ -54,12 +54,12 @@ public class PlaylistDAO {
             while (rs.next()) {
                 String name = rs.getString("name");
                 int id = rs.getInt("id");
-                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(id); //Puts all songs into the playlist
-                Playlist pl = new Playlist(allSongs.size(), countTotalTime(allSongs), name, id); //Creates a new playlist object
-                pl.setSongList(allSongs); // Sets up the song list
-                allPlaylists.add(pl); // Adds the playlist to the playlist array
+                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(id); // Tilføjer alle sange til playliste
+                Playlist pl = new Playlist(allSongs.size(), countTotalTime(allSongs), name, id); // Skaber et nyt playlist object.
+                pl.setSongList(allSongs); // Opstiller sang liste
+                allPlaylists.add(pl); // Tilføjer playliste til playlist tabellen.
             }
-            return allPlaylists; // Returns the playlists
+            return allPlaylists; // Returnere playlisten.
         } catch (SQLServerException ex) {
             System.out.println(ex);
             return null;
@@ -70,18 +70,18 @@ public class PlaylistDAO {
     }
 
     /*
-    Counts all combined time of all songs in the playlist and outputs it in seconds.
+    Tæller alle sekunder sammen på en playliste.
      */
     private int countTotalTime(List<SongModel> allSongs) {
         int totalTime = 0;
         for (SongModel allSong : allSongs) {
             totalTime += allSong.getPlaytime();
         }
-        return totalTime; //returns total count in seconds
+        return totalTime; //Returnere sekunder.
     }
 
     /*
-    Creates playlist with given name
+    Tilføjer playlist med givet navn.
      */
     public Playlist createPlaylist(String name) {
         String sql = "INSERT INTO Playlist(name) VALUES (?)";
@@ -95,12 +95,12 @@ public class PlaylistDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        Playlist playlist = new Playlist(0, 0, name, getNewestPlaylist()); //Creates a playlist object and specifies that there are no songs present.
+        Playlist playlist = new Playlist(0, 0, name, getNewestPlaylist()); //Skaber en playlist og specificere at der ikke findes nogen sange.
         return playlist;
     }
 
     /*
-    Gets the newest inserted playlists ID in order to create a playlist object.
+    Getter den nyeste Playliste ID i række til at skabe en ny playliste.
      */
     private int getNewestPlaylist() {
         int newestID = -1;
@@ -122,7 +122,7 @@ public class PlaylistDAO {
     }
 
     /*
-    Updates specified playlist with user given name
+    Opdatere specificeret playliste med given navn.
      */
     public void updatePlaylist(Playlist selectedItem, String name) {
         try (Connection con = ds.getConnection()) {
@@ -139,7 +139,7 @@ public class PlaylistDAO {
     }
 
     /*
-    Deletes specified playlist from database.
+    Sletter Specificeret playlist fra databasen.
      */
     public void deletePlaylist(Playlist play) {
         try (Connection con = ds.getConnection()) {

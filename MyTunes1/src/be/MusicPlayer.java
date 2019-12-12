@@ -13,7 +13,7 @@ import javazoom.jl.player.AudioDevice;
 
 /**
  *
- * @author kaspe
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class MusicPlayer
 {
@@ -22,17 +22,17 @@ public class MusicPlayer
     public final static int PAUSED = 2;
     public final static int FINISHED = 3;
 
-    // the player actually doing all the work
+    // Player bliver brugt af mange af de andre instanser
     public Player player;
 
-    // locking object used to communicate with player thread
+    
     public Object playerLock = new Object();
 
-    // status variable what player thread is doing/supposed to do
+    // Variable om hvilken af vores 4 statiske int. er i effekt.
     public int playerStatus = NOTSTARTED;
 
     
-    public MusicPlayer(InputStream inputStream) throws JavaLayerException 
+    public MusicPlayer(InputStream inputStream) throws JavaLayerException // referere til vores javalayerexception.java klasse
     {
         this.player = new Player(inputStream);
     }
@@ -44,7 +44,7 @@ public class MusicPlayer
 
     
     /**
-     * Play current song
+     * Afspil sang
      */
     public void play() throws JavaLayerException 
     {
@@ -76,7 +76,7 @@ public class MusicPlayer
     }
 
     /**
-     * Pauses playback. Returns true if new state is PAUSED.
+     * Pause knap
      */
     public boolean pause() 
     {
@@ -91,7 +91,7 @@ public class MusicPlayer
     }
 
     /**
-     * Resumes playback. Returns true if the new state is PLAYING.
+     * Resumere sang
      */
     public boolean resume() 
     {
@@ -107,7 +107,7 @@ public class MusicPlayer
     }
 
     /**
-     * Stops playback. If not playing, does nothing
+     * Afbryder sang
      */
     public void stop() 
     {
@@ -132,7 +132,7 @@ public class MusicPlayer
             {
                 break;
             }
-            // check if paused or terminated
+            // Checker om pause eller lukket
             synchronized (playerLock) 
             {
                 while (playerStatus == PAUSED) 
@@ -143,7 +143,7 @@ public class MusicPlayer
                     }
                     catch (final InterruptedException e) 
                     {
-                        // terminate player
+                        // Afslutter afspiller
                         break;
                     }
                 }
@@ -153,7 +153,7 @@ public class MusicPlayer
     }
 
     /**
-     * Closes the player, regardless of current state.
+     * Afslutter afspilleren
      */
     public void close() 
     {
@@ -165,32 +165,5 @@ public class MusicPlayer
             player.close();
         } catch (final Exception e) 
         {
-            // ignore, we are terminating anyway
         }
     }
-
-    // demo how to use
-    //public static void main(String[] argv) {
-        //try
-        //{
-            //FileInputStream input = new FileInputStream("sang.mp3"); 
-            //Player player = new Player(input);
-
-            // start playing
-            //player.play();
-
-            // after 5 secs, pause
-            //Thread.sleep(5000);
-            //player.pause();     
-
-            // after 5 secs, resume
-            //Thread.sleep(5000);
-            //player.resume();
-        //} 
-        //catch (final Exception e) 
-        //{
-            //throw new RuntimeException(e);
-    //}
-
-    //}
-}

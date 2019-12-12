@@ -12,82 +12,82 @@ import be.SongModel;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public interface LogicFacade {
 
     /*
-    Gets a list of all playlists
+    Laver en liste af alle Playlister
      */
     public List<Playlist> getAllPlaylists();
 
     /*
-    Creates a playlist
+    Skaber af Playlister
      */
     public Playlist createPlaylist(String name);
 
     /*
-    Edits the playlist with new name
+    Konfiguerer navne på Playlister
      */
     public void editPlaylist(Playlist get, String text);
 
     /*
-    Deletes specified playlist
+    Sletter Playlister
      */
     public void deletePlaylist(Playlist play);
 
     /*
-    Gets a list of all songs
+    Laver en liste for nye sange
      */
     public List<SongModel> getAllSongs();
 
     /*
-    Creates a song with given parameters
+    Skaber paramterne for sangen
      */
     public SongModel createSong(String title, String artist, String category, int playtime, String location);
 
     /*
-    Updates song with given parameters
+    Opdatere sange med givne parametere
      */
     public SongModel updateSong(SongModel songToDelete, String title, String artist, String category, int playtime, String location);
 
     /*
-    Deletes specified song
+    Sletter specificerede sange
      */
     public void deleteSong(SongModel songToDelete);
 
     /*
-    Adds specified song to specified playlist
+    Tilføjer sange til en specificeret Playliste
      */
     public SongModel addToPlaylist(Playlist playlist, SongModel song);
 
     /*
-    Removes song from specified playlist
+    Fjerner sange fra specificeret liste
      */
     public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong);
 
     /*
-    Edits song position in playlist list
+    Ændre positionen for sangen på playlisten
      */
     public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith);
 
     /*
-    Searches for all songs that matches the given query 
+    Søger sange som matcher søge kriteriet
      */
     public ObservableList<SongModel> search(ObservableList<SongModel> items, String text);
 
     /*
-    Gets all categories
+    Getter alle Katagorierne
      */
     public List<String> getAllCategories();
 
     /*
-    Creates a new category
+    Skaber en ny Katagori
      */
     public void createCategory(String name);
 
     /*
-    Deletes specified category
+    Sletter Defineret Katagori
      */
     public void deleteCategory(String name);
 

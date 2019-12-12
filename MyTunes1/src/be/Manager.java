@@ -18,8 +18,10 @@ import dal.SongDAO;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
+
+
 public class Manager implements LogicFacade {
 
     private final PlaylistDAO playListDAO;
@@ -29,9 +31,10 @@ public class Manager implements LogicFacade {
     private final CategoriesDAO categoriesDAO;
 
     /*
-    Initialises all classes in DAL
+    Starter alle dal klasser
      */
-    public Manager() throws IOException {
+    public Manager() throws IOException 
+    {
         playListDAO = new PlaylistDAO();
         songDAO = new SongDAO();
         songSearcher = new SongFilter();
@@ -40,30 +43,35 @@ public class Manager implements LogicFacade {
     }
 
     @Override
-    public List<Playlist> getAllPlaylists() {
+    public List<Playlist> getAllPlaylists()  //getter for playliste
+    {
         return playListDAO.getAllPlaylists();
     }
 
     @Override
-    public void deletePlaylist(Playlist play) {
-        PlaylistSongInfo.deleteFromPlaylistSongsEverything(play); // Deletes all playlist references in playlistSong table
-        playListDAO.deletePlaylist(play); //Deletes the playlist from playlist table
+    public void deletePlaylist(Playlist play) 
+    {
+        PlaylistSongInfo.deleteFromPlaylistSongsEverything(play); // Fjerner sange fra playliste
+        playListDAO.deletePlaylist(play); 
     }
 
     @Override
-    public List<SongModel> getAllSongs() {
+    public List<SongModel> getAllSongs() //getter for sange
+    {
         return songDAO.getAllSongs();
     }
 
     @Override
-    public SongModel createSong(String title, String artist, String category, int playtime, String location) {
+    public SongModel createSong(String title, String artist, String category, int playtime, String location) //Tilføjer sang til databasen
+    {
         return songDAO.createSong(title, artist, category, playtime, location);
     }
 
     @Override
-    public void deleteSong(SongModel songToDelete) {
-        PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Deletes all song references in playlistSong table
-        songDAO.deleteSong(songToDelete); // Deletes song from song table
+    public void deleteSong(SongModel songToDelete) 
+    {
+        PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Fjerner sange fra databasen
+        songDAO.deleteSong(songToDelete); 
     }
 
 //    @Override
@@ -72,47 +80,56 @@ public class Manager implements LogicFacade {
 //    }
 
     @Override
-    public Playlist createPlaylist(String name) {
+    public Playlist createPlaylist(String name) 
+    {
         return playListDAO.createPlaylist(name);
     }
 
     @Override
-    public SongModel addToPlaylist(Playlist playlist, SongModel song) {
+    public SongModel addToPlaylist(Playlist playlist, SongModel song) 
+    {
         return PlaylistSongInfo.addToPlaylist(playlist, song);
     }
 
     @Override
-    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
+    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) 
+    {
         PlaylistSongInfo.removeSongFromPlaylist(selectedItem, selectedSong);
     }
 
     @Override
-    public void editPlaylist(Playlist get, String text) {
+    public void editPlaylist(Playlist get, String text) 
+    {
         playListDAO.updatePlaylist(get, text);
     }
 
     @Override
-    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
+    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) 
+    {
         PlaylistSongInfo.editSongPosition(selectedItem, selected, exhangeWith);
     }
 
     @Override
-    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) {
+    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) 
+    {
         return songSearcher.search(items, text);
     }
 
     @Override
-    public List<String> getAllCategories() {
+    public List<String> getAllCategories() 
+    {
         return categoriesDAO.getAllCategories();
     }
 
     @Override
-    public void createCategory(String name) {
+    public void createCategory(String name) 
+    {
         categoriesDAO.createCategory(name);
     }
 
     @Override
-    public void deleteCategory(String name) {
+    public void deleteCategory(String name) 
+    {
         categoriesDAO.deleteCategory(name);
     }
 

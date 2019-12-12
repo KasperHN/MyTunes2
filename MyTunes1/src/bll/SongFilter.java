@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author kaspe
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class SongFilter
 {
@@ -20,7 +20,7 @@ public class SongFilter
     private ObservableList<SongModel> temp = FXCollections.observableArrayList();
 
     /*
-    Searches trough all song titles and gets all items that start with specifies string
+    Søger gennem alle sang titler på String.
      */
     public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) {
         temp.clear();
