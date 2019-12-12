@@ -135,4 +135,9 @@ public class Manager implements LogicFacade {
         categoriesDAO.deleteCategory(name);
     }
 
+    @Override
+    public SongModel updateSong(SongModel songToDelete, String title, String artist, String category, int playtime, String location) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
