@@ -5,10 +5,12 @@
  */
 package gui.controllers;
 
+import dal.SongDAO;
 import be.MusicPlayer;
 import be.SongModel;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -57,9 +59,41 @@ public class Import_mp3Controller implements Initializable
     {
         
     }
-
     
+    @FXML
+    private void editSong(ActionEvent event) throws IOException {
+        if (tableViewSongs.getSelectionModel().getSelectedIndex() != -1) {
+            setUpScenes(2, true);
+        }
+    }
     
+    void refreshSongList(boolean isEditing) 
+    {
+        allSongs.getItems().clear();
+        tableViewSongs.setItems(SongModel.getSongs());
+        if (isEditing) {
+            songsInPlaylist.getItems().clear();
+            refreshList();
+        }
+    }
+    
+    void setInfo(SongModel selectedItem) 
+    {
+        isEditing = true;
+        songToEdit = selectedItem;
+        title.setText(selectedItem.getTitle());
+        if (selectedItem.getArtist() != null) {
+            artistField.setText(selectedItem.getArtist());
+        }
+        title.setText(selectedItem.getLocation());
+        if (selectedItem.getCategory() != null) {
+            categoryChoice.setValue(selectedItem.getCategory());
+        } else {
+            categoryChoice.setValue("");
+        }
+        musicplayer = new MusicPlayer(new Media(new File(selectedItem.getLocation()).toURI().toString()));
+        
+    }
 
 //    @FXML
 //    private void addSong(ActionEvent event, int i) 
