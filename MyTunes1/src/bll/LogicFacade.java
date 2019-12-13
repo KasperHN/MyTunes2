@@ -84,11 +84,11 @@ public interface LogicFacade {
     /*
     Skaber en ny Katagori
      */
-    public void createGenre(String name);
+    public void createGenre(String title);
 
     /*
     Sletter Defineret Katagori
      */
-    public void deleteGenre(String name);
+    public void deleteGenre(String title);
 
 }

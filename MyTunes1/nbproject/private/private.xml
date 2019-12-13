@@ -5,10 +5,18 @@
         <group>
             <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/DatabaseConnector.java</file>
             <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/PlaylistDAO.java</file>
-            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/bll/Manager.java</file>
-            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/GenreDAO.java</file>
             <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/PlaylistSongDAO.java</file>
             <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/SongDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/gui/controllers/MyTunesController.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/be/JavaLayerException.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/be/MusicPlayer.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/be/SongModel.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/bll/LogicFacade.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/be/Playlist.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/bll/Manager.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/GenreDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/bll/SongFilter.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/gui/MyTunes1.java</file>
             <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/gui/controllers/Import_mp3Controller.java</file>
         </group>
     </open-files>

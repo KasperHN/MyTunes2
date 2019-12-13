@@ -15,30 +15,22 @@ public class Playlist {
 
     private List<SongModel> Playlist; //Playlist
     private int songCount; // Antal sange i Playlist
-    private final int ID; // Unique playlist ID
+    private final int songid; // Unique playlist ID
     private String title;
 
-    public Playlist(int songCount, String title, int ID) {
+    public Playlist(List<SongModel> Playlist, int songCount, int songid, String title) {
+        this.Playlist = Playlist;
         this.songCount = songCount;
+        this.songid = songid;
         this.title = title;
-        this.ID = ID;
     }
 
-    public Playlist(int i, int i0, String title, int newestPlaylist) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getID() 
-    {
-        return ID;
-    }
-
-    public List<SongModel> getSongList() {
+    public List<SongModel> getPlaylist() {
         return Playlist;
     }
 
-    public void setSongList(List<SongModel> songList) {
-        this.Playlist = songList;
+    public void setPlaylist(List<SongModel> Playlist) {
+        this.Playlist = Playlist;
     }
 
     public int getSongCount() {
@@ -53,12 +45,9 @@ public class Playlist {
         return title;
     }
 
-    public void setName(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "title=" +title + "Total song count =" + songCount;
-    }
+
 }

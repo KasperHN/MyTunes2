@@ -5,23 +5,26 @@
  */
 package gui.controllers;
 
-import dal.SongDAO;
 import be.MusicPlayer;
 import be.SongModel;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+import static java.lang.Math.toIntExact;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javax.print.attribute.standard.Media;
+import javax.swing.text.html.HTML.Tag;
+import org.jaudiotagger.audio.AudioFile;
+import org.jaudiotagger.audio.AudioFileIO;
+import org.jaudiotagger.tag.FieldKey;
+import org.jaudiotagger.tag.Tag;
 
 
 
@@ -30,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author Nicklas, Kasper, Christian og Jonas
  */
-public class Import_mp3Controller implements Initializable 
+public abstract class Import_mp3Controller implements Initializable 
 {
 
     @FXML
@@ -53,99 +56,59 @@ public class Import_mp3Controller implements Initializable
     private Button btnCancel;
     @FXML
     private Label errorLabel;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
+    
+    @FXML
+    private void editSong(ActionEvent event) throws IOException 
     {
         
     }
     
-    @FXML
-    private void editSong(ActionEvent event) throws IOException {
-        if (tableViewSongs.getSelectionModel().getSelectedIndex() != -1) {
-            setUpScenes(2, true);
-        }
-    }
-    
     void refreshSongList(boolean isEditing) 
     {
-        allSongs.getItems().clear();
-        tableViewSongs.setItems(SongModel.getSongs());
-        if (isEditing) {
-            songsInPlaylist.getItems().clear();
-            refreshList();
-        }
+       
+        
     }
     
     void setInfo(SongModel selectedItem) 
     {
-        isEditing = true;
-        songToEdit = selectedItem;
-        title.setText(selectedItem.getTitle());
-        if (selectedItem.getArtist() != null) {
-            artistField.setText(selectedItem.getArtist());
-        }
-        title.setText(selectedItem.getSongLocation());
-        if (selectedItem.getGenre() != null) {
-            genreChoice.setValue(selectedItem.getGenre());
-        } else {
-            genreChoice.setValue("");
-        }
-        musicplayer = new MusicPlayer(new Media(new File(selectedItem.getLocation()).toURI().toString()));
+        
         
     }
 
     @FXML
     private void addSong(ActionEvent event, int i) 
     {
-       int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
-        String title = titleField.getText().trim();
-        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
-        { 
-            if (!isEditing) 
-            { 
-                SongModel.createSong(title, artistField.getText(), genreChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-                errorLabel.setText("Success: Successfully created the song");
-            } 
-            else 
-            {
-                SongModel.updateSong(songToEdit, title, artistField.getText(), genreChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-                errorLabel.setText("Success: Successfully updated the song");
-            }
-        } else 
-        {
-            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
-        }
-
-        controller1.refreshSongList(isEditing); 
-    }
-    
-    @FXML
-    private void moreCat(ActionEvent event) 
-    {
         
     }
     
-    @FXML
-    private void chooseSong(ActionEvent event) 
+     @FXML
+    public void chooseFile(ActionEvent event)
     {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + System.getProperty("file.separator") + "Desktop")); //Sets the directory to the desktop
-        fileChooser.setTitle("Select song");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) 
+
+        try
         {
-            title.setText(selectedFile.getAbsolutePath());    
+            FileChooser fileChooser = new FileChooser();
+            Window stage = null;
+            File file = fileChooser.showOpenDialog(stage);
+
+            AudioFile f;
+            f = AudioFileIO.read(file);
+            Tag t = f.getTagOrCreateAndSetDefault();
+            time.setText(Integer.toString(f.getAudioHeader().getTrackLength()));
+            artistField.setText(t.getFirst(FieldKey.ARTIST));
+            title.setText(t.getFirst(FieldKey.TITLE));
+            file.setText(file.getPath());
+            f.commit();
+
+        } catch (Exception e)
+        {
         }
     }
-    
     @FXML
-    private void addCancel(ActionEvent event) 
+    private void newCancelButton(ActionEvent event)
     {
-        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        
+        Stage stage = (Stage)  btnCancel.getScene().getWindow();
         stage.close();
     }
 }

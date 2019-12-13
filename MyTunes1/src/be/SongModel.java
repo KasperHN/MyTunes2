@@ -9,11 +9,8 @@
 package be;
 
 import bll.LogicFacade;
-import java.io.IOException;
-import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javazoom.jl.decoder.Manager;
 
 
 
@@ -24,40 +21,18 @@ import javazoom.jl.decoder.Manager;
 
 public class SongModel 
 {
-
-       
-    private ObservableList<SongModel> allSongs = FXCollections.observableArrayList();
-
-    private LogicFacade logiclayer;
-   
-
-    /*
-    Getter for alle existerende sange
-    */
-    public ObservableList<SongModel> getSongs() 
-    {
-        allSongs = FXCollections.observableArrayList();
-        allSongs.addAll(logiclayer.getAllSongs());
-        return allSongs;
-    }
-
     private String title; // Title på sang
     private String artist; // Kunstner af sang
     private String genre; 
     private String songlocation; // Sanges lokation
-    private final int ID; // Unique Sang ID i Databasen
+    private int songid; // Unique Sang ID i Databasen
 
-    public SongModel(String title, String artist, String genre,String songlocation, int ID) 
-    {
+    public SongModel(String title, String artist, String genre, String songlocation, int songid) {
         this.title = title;
         this.artist = artist;
         this.genre = genre;
         this.songlocation = songlocation;
-        this.ID = ID;
-    }
-
-    public int getID() {
-        return ID;
+        this.songid = songid;
     }
 
     public String getTitle() {
@@ -76,32 +51,29 @@ public class SongModel
         this.artist = artist;
     }
 
-    public int getLocationInList() {
-        return locationInList;
-    }
-
-    public void setLocationInList(int locationInList) {
-        this.locationInList = locationInList;
-    }
-
     public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String category) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
-    public String getSongLocation() {
+    public String getSonglocation() {
         return songlocation;
     }
 
-    public void setSongLocation(String location) {
-        this.songlocation = location;
+    public void setSonglocation(String songlocation) {
+        this.songlocation = songlocation;
     }
 
-    @Override
-    public String toString() {
-        return title;
+    public int getSongid() {
+        return songid;
     }
+
+    public void setSongid(int songid) {
+        this.songid = songid;
+    }
+    
 }
+   
