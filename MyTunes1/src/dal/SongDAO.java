@@ -49,8 +49,8 @@ public class SongDAO {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) { // Skaber og tilføjer sang objecter til array listen.
- //               song = new Song(rs.getString("songid"), rs.getString("artist"), rs.getString("title"), rs.getInt("genre"), rs.getString(""));
- //               allSongs.add(song);
+                song = new Song(rs.getString("songid"), rs.getString("artist"), rs.getString("title"), rs.getInt("genre"), rs.getString(""));
+                allSongs.add(song);
             }
             return allSongs; //Returnere en fuld liste.
         } catch (SQLServerException ex) {
@@ -66,33 +66,33 @@ public class SongDAO {
     Laver en sang og tilføjer den til databasen.
      */
     //public SongModel createSong(Song song) throws DalException 
-//    {
-//        String sql = "INSERT INTO Song(songid,artist,title,genre,songlocation) VALUES (?,?,?,?,?)";
-//        try (Connection con = ds.getConnection()) {
-//            PreparedStatement ps = con.prepareStatement(sql);
+    {
+        String sql = "INSERT INTO Song(songid,artist,title,genre,songlocation) VALUES (?,?,?,?,?)";
+        try (Connection con = ds.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(sql);
            
-//            ps.setString(1, SongModel.songid());
-//            ps.setString(2, SongModel.artist());
-//            ps.setString(3, SongModel.title());
-//            ps.setString(4, SongModel.genre());
-//            ps.setString(5, SongModel.songlocation);
-//            ps.addBatch();
-//            ps.executeBatch();
-//        } catch (SQLServerException ex) {
-//            System.out.println(ex);
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        SongModel song = new SongModel(songid, artist, title, genre, songlocation, getNewestSongID()); //Laver et sang object
-//        return song; //Returnere sang objected
+            ps.setString(1, SongModel.songid());
+            ps.setString(2, SongModel.artist());
+            ps.setString(3, SongModel.title());
+            ps.setString(4, SongModel.genre());
+            ps.setString(5, SongModel.songlocation);
+            ps.addBatch();
+            ps.executeBatch();
+        } catch (SQLServerException ex) {
+            System.out.println(ex);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        SongModel song = new SongModel(songid, artist, title, genre, songlocation, getNewestSongID()); //Laver et sang object
+        return song; //Returnere sang objected
         
         // Attempts to update the database
-//            int affectedRows = ps.executeUpdate();
-//            if (affectedRows < 1)
-//            {
-//                throw new SQLException("Can't save song");
-//            }
-//    }
+            int affectedRows = ps.executeUpdate();
+            if (affectedRows < 1)
+            {
+                throw new SQLException("Can't save song");
+            }
+    }
     
    
 

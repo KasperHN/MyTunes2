@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/DatabaseConnector.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/PlaylistDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/bll/Manager.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/GenreDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/PlaylistSongDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/dal/SongDAO.java</file>
+            <file>file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/src/gui/controllers/Import_mp3Controller.java</file>
+        </group>
     </open-files>
 </project-private>

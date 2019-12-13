@@ -94,7 +94,7 @@ public class PlaylistSongDAO {
             ps.setInt(3, Id);
             ps.addBatch();
             ps.executeBatch();
-//          song.setLocationInList(Id);
+          song.setLocationInList(Id);
             return song; // returnere sang objecter.
         } catch (SQLServerException ex) {
             System.out.println(ex);
@@ -153,20 +153,20 @@ public class PlaylistSongDAO {
         try (Connection con = ds.getConnection()) {
             String query = "UPDATE PlaylistSong set locationInListID = ? WHERE PlaylistID = ? AND songid = ? AND locationInListID = ? ";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-//            preparedStmt.setInt(1, exhangeWith.getLocationInList());
+            preparedStmt.setInt(1, exhangeWith.getLocationInList());
             preparedStmt.setInt(2, selectedItem.getID());
             preparedStmt.setInt(3, selected.getID());
-//            preparedStmt.setInt(4, selected.getLocationInList());
+            preparedStmt.setInt(4, selected.getLocationInList());
             preparedStmt.addBatch();
-//            preparedStmt.setInt(1, selected.getLocationInList());
+            preparedStmt.setInt(1, selected.getLocationInList());
             preparedStmt.setInt(2, selectedItem.getID());
             preparedStmt.setInt(3, exhangeWith.getID());
-//            preparedStmt.setInt(4, exhangeWith.getLocationInList());
+            preparedStmt.setInt(4, exhangeWith.getLocationInList());
             preparedStmt.addBatch();
             preparedStmt.executeBatch();
-//            int temp = selected.getLocationInList(); // Laver en midlertidig ID
-//            selected.setLocationInList(exhangeWith.getLocationInList());
-//            exhangeWith.setLocationInList(temp);
+            int temp = selected.getLocationInList(); // Laver en midlertidig ID
+            selected.setLocationInList(exhangeWith.getLocationInList());
+            exhangeWith.setLocationInList(temp);
         } catch (SQLServerException ex) {
             System.out.println(ex);
         } catch (SQLException ex) {
@@ -183,7 +183,7 @@ public class PlaylistSongDAO {
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, selectedItem.getID());
             preparedStmt.setInt(2, selectedSong.getID());
-//            preparedStmt.setInt(3, selectedSong.getLocationInList());
+            preparedStmt.setInt(3, selectedSong.getLocationInList());
             preparedStmt.execute();
         } catch (SQLServerException ex) {
             System.out.println(ex);

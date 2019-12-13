@@ -76,13 +76,13 @@ public class SongModel
         this.artist = artist;
     }
 
-//    public int getLocationInList() {
-//        return locationInList;
-//    }
+    public int getLocationInList() {
+        return locationInList;
+    }
 
-//    public void setLocationInList(int locationInList) {
-//        this.locationInList = locationInList;
-//    }
+    public void setLocationInList(int locationInList) {
+        this.locationInList = locationInList;
+    }
 
     public String getGenre() {
         return genre;

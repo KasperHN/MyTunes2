@@ -53,12 +53,12 @@ public class Playlist {
         return title;
     }
 
-    public void setName(String name) {
+    public void setName(String title) {
         this.title = title;
     }
 
     @Override
     public String toString() {
-        return "Name=" +title + "Total song count =" + songCount;
+        return "title=" +title + "Total song count =" + songCount;
     }
 }

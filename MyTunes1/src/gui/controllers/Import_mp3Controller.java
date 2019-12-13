@@ -85,40 +85,40 @@ public class Import_mp3Controller implements Initializable
         if (selectedItem.getArtist() != null) {
             artistField.setText(selectedItem.getArtist());
         }
-        title.setText(selectedItem.getLocation());
-        if (selectedItem.getCategory() != null) {
-            categoryChoice.setValue(selectedItem.getCategory());
+        title.setText(selectedItem.getSongLocation());
+        if (selectedItem.getGenre() != null) {
+            genreChoice.setValue(selectedItem.getGenre());
         } else {
-            categoryChoice.setValue("");
+            genreChoice.setValue("");
         }
         musicplayer = new MusicPlayer(new Media(new File(selectedItem.getLocation()).toURI().toString()));
         
     }
 
-//    @FXML
-//    private void addSong(ActionEvent event, int i) 
-//    {
-//       int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
-//        String name = nameField.getText().trim();
-//        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
-//        { 
-//            if (!isEditing) 
-//            { 
-//                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-//                errorLabel.setText("Success: Successfully created the song");
-//            } 
-//            else 
-//            {
-//                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-//                errorLabel.setText("Success: Successfully updated the song");
-//            }
-//        } else 
-//        {
-//            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
-//        }
-//
-//        controller1.refreshSongList(isEditing); 
-//    }
+    @FXML
+    private void addSong(ActionEvent event, int i) 
+    {
+       int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
+        String title = titleField.getText().trim();
+        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
+        { 
+            if (!isEditing) 
+            { 
+                SongModel.createSong(title, artistField.getText(), genreChoice.getSelectionModel().getSelectedItem(), i, title.getText());
+                errorLabel.setText("Success: Successfully created the song");
+            } 
+            else 
+            {
+                SongModel.updateSong(songToEdit, title, artistField.getText(), genreChoice.getSelectionModel().getSelectedItem(), i, title.getText());
+                errorLabel.setText("Success: Successfully updated the song");
+            }
+        } else 
+        {
+            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
+        }
+
+        controller1.refreshSongList(isEditing); 
+    }
     
     @FXML
     private void moreCat(ActionEvent event) 
