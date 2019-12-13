@@ -24,12 +24,12 @@
                <effect>
                   <InnerShadow />
                </effect></TextField>
-            <TextField fx:id="categoryChoice" layoutX="90.0" layoutY="90.0" prefHeight="26.0" prefWidth="154.0">
+            <TextField fx:id="genreChoice" layoutX="90.0" layoutY="90.0" prefHeight="26.0" prefWidth="154.0">
                <effect>
                   <InnerShadow />
                </effect></TextField>
             <Label layoutX="33.0" layoutY="64.0" prefHeight="18.0" prefWidth="41.0" text="Artist:" />
-            <Label layoutX="33.0" layoutY="94.0" prefHeight="18.0" prefWidth="59.0" text="Category:" />
+            <Label layoutX="33.0" layoutY="94.0" prefHeight="18.0" prefWidth="59.0" text="Genre:" />
             <Label layoutX="33.0" layoutY="124.0" prefHeight="18.0" prefWidth="41.0" text="Time:" />
             <TextField fx:id="file" layoutX="90.0" layoutY="150.0" prefHeight="26.0" prefWidth="276.0">
                <effect>

@@ -19,7 +19,7 @@ import be.SongModel;
 
 /**
  *
- * @author nedas
+ * @author Nicklas, Kasper, Christian og Jonas
  */
 public class PlaylistSongDAO {
 
@@ -45,13 +45,13 @@ public class PlaylistSongDAO {
     public List<SongModel> getPlaylistSongs(int id) {
         List<SongModel> newSongList = new ArrayList();
         try (Connection con = ds.getConnection()) {
-            String query = "SELECT * FROM PlaylistSong INNER JOIN Song ON PlaylistSong.SongID = Song.id WHERE PlaylistSong.PlaylistID = ? ORDER by locationInListID desc"; // Henter alle sange fra en playliste
+            String query = "SELECT * FROM Playlist INNER JOIN Song ON PlaylistSong.SongID = Song.id WHERE PlaylistSong.PlaylistID = ? ORDER by locationInListID desc"; // Henter alle sange fra en playliste
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, id);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
-                SongModel song = new SongModel(rs.getString("name"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"), rs.getString("url"), rs.getInt("id")); // Sets up a song object
-                song.setLocationInList(rs.getInt("locationInListID")); // indsætter int lister locationer.
+                SongModel song = new SongModel(rs.getString("title"), rs.getString("artist"), rs.getString("genre"), rs.getString("songlocation"), rs.getInt("songid")); // Sets up a song object
+//                song.setLocationInList(rs.getInt("locationInListID")); // indsætter int lister locationer.
                 newSongList.add(song); //Tilføjer sange til sang array listen.
             }
             return newSongList;
@@ -69,7 +69,7 @@ public class PlaylistSongDAO {
      */
     public void deleteFromPlaylistSongsEverything(SongModel songToDelete) {
         try (Connection con = ds.getConnection()) {
-            String query = "DELETE from PlaylistSong WHERE SongID = ?";
+            String query = "DELETE from Playlist WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, songToDelete.getID());
             preparedStmt.execute();
@@ -94,7 +94,7 @@ public class PlaylistSongDAO {
             ps.setInt(3, Id);
             ps.addBatch();
             ps.executeBatch();
-            song.setLocationInList(Id);
+//          song.setLocationInList(Id);
             return song; // returnere sang objecter.
         } catch (SQLServerException ex) {
             System.out.println(ex);
@@ -151,22 +151,22 @@ public class PlaylistSongDAO {
      */
     public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
         try (Connection con = ds.getConnection()) {
-            String query = "UPDATE PlaylistSong set locationInListID = ? WHERE PlaylistID = ? AND SongID = ? AND locationInListID = ? ";
+            String query = "UPDATE PlaylistSong set locationInListID = ? WHERE PlaylistID = ? AND songid = ? AND locationInListID = ? ";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-            preparedStmt.setInt(1, exhangeWith.getLocationInList());
+//            preparedStmt.setInt(1, exhangeWith.getLocationInList());
             preparedStmt.setInt(2, selectedItem.getID());
             preparedStmt.setInt(3, selected.getID());
-            preparedStmt.setInt(4, selected.getLocationInList());
+//            preparedStmt.setInt(4, selected.getLocationInList());
             preparedStmt.addBatch();
-            preparedStmt.setInt(1, selected.getLocationInList());
+//            preparedStmt.setInt(1, selected.getLocationInList());
             preparedStmt.setInt(2, selectedItem.getID());
             preparedStmt.setInt(3, exhangeWith.getID());
-            preparedStmt.setInt(4, exhangeWith.getLocationInList());
+//            preparedStmt.setInt(4, exhangeWith.getLocationInList());
             preparedStmt.addBatch();
             preparedStmt.executeBatch();
-            int temp = selected.getLocationInList(); // Laver en midlertidig ID
-            selected.setLocationInList(exhangeWith.getLocationInList());
-            exhangeWith.setLocationInList(temp);
+//            int temp = selected.getLocationInList(); // Laver en midlertidig ID
+//            selected.setLocationInList(exhangeWith.getLocationInList());
+//            exhangeWith.setLocationInList(temp);
         } catch (SQLServerException ex) {
             System.out.println(ex);
         } catch (SQLException ex) {
@@ -179,11 +179,11 @@ public class PlaylistSongDAO {
      */
     public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
         try (Connection con = ds.getConnection()) {
-            String query = "DELETE from PlaylistSong WHERE PlaylistID = ? AND SongID = ? AND locationInListID = ?";
+            String query = "DELETE from PlaylistSong WHERE PlaylistID = ? AND songid = ? AND locationInListID = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, selectedItem.getID());
             preparedStmt.setInt(2, selectedSong.getID());
-            preparedStmt.setInt(3, selectedSong.getLocationInList());
+//            preparedStmt.setInt(3, selectedSong.getLocationInList());
             preparedStmt.execute();
         } catch (SQLServerException ex) {
             System.out.println(ex);

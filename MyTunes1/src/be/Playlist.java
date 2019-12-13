@@ -13,19 +13,19 @@ import java.util.List;
  */
 public class Playlist {
 
-    private List<SongModel> songList; //Playlist
+    private List<SongModel> Playlist; //Playlist
     private int songCount; // Antal sange i Playlist
-    private int totalTime; // Total tid af sange på playliste
-    private final String totalTimeString; //Samme som overstående men i  hour:minute:second format
-    private String name; // Navn på playliste
     private final int ID; // Unique playlist ID
+    private String title;
 
-    public Playlist(int songCount, int totalTime, String name, int ID) {
+    public Playlist(int songCount, String title, int ID) {
         this.songCount = songCount;
-        this.totalTime = totalTime;
-        totalTimeString = getTotalTimeString();
-        this.name = name;
+        this.title = title;
         this.ID = ID;
+    }
+
+    public Playlist(int i, int i0, String title, int newestPlaylist) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getID() 
@@ -34,11 +34,11 @@ public class Playlist {
     }
 
     public List<SongModel> getSongList() {
-        return songList;
+        return Playlist;
     }
 
     public void setSongList(List<SongModel> songList) {
-        this.songList = songList;
+        this.Playlist = songList;
     }
 
     public int getSongCount() {
@@ -49,46 +49,16 @@ public class Playlist {
         this.songCount = songCount;
     }
 
-    public int getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(int totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.title = title;
     }
 
     @Override
     public String toString() {
-        return " Name=" + name + "Total song count =" + songCount + ", Total play Time=" + totalTime;
-    }
-
-    /*
-    Konverterer sange til minutter sekunder og timer.
-     */
-    public String getTotalTimeString() {
-        String minutesString;
-        String secondString;
-        int hours = totalTime / 3600;
-        int minutes = (totalTime % 3600) / 60;
-        if (minutes < 10) {
-            minutesString = "0" + minutes;
-        } else {
-            minutesString = "" + minutes;
-        }
-        int seconds = totalTime % 60;
-        if (10 > seconds) {
-            secondString = "0" + seconds;
-        } else {
-            secondString = "" + seconds;
-        }
-        return hours + ":" + minutesString + ":" + secondString;
+        return "Name=" +title + "Total song count =" + songCount;
     }
 }

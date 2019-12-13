@@ -24,7 +24,7 @@ public interface LogicFacade {
     /*
     Skaber af Playlister
      */
-    public Playlist createPlaylist(String name);
+    public Playlist createPlaylist(String title);
 
     /*
     Konfiguerer navne på Playlister
@@ -44,12 +44,12 @@ public interface LogicFacade {
     /*
     Skaber paramterne for sangen
      */
-    public SongModel createSong(String title, String artist, String category, int playtime, String location);
+    public SongModel createSong(String title, String artist, String genre, String songlocation);
 
     /*
     Opdatere sange med givne parametere
      */
-    public SongModel updateSong(SongModel songToDelete, String title, String artist, String category, int playtime, String location);
+    public SongModel updateSong(SongModel songToDelete, String title, String artist, String genre, String songlocation);
 
     /*
     Sletter specificerede sange
@@ -79,16 +79,16 @@ public interface LogicFacade {
     /*
     Getter alle Katagorierne
      */
-    public List<String> getAllCategories();
+    public List<String> getAllGenre();
 
     /*
     Skaber en ny Katagori
      */
-    public void createCategory(String name);
+    public void createGenre(String name);
 
     /*
     Sletter Defineret Katagori
      */
-    public void deleteCategory(String name);
+    public void deleteGenre(String name);
 
 }

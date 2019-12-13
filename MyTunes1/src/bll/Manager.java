@@ -13,7 +13,7 @@ import be.SongModel;
 import be.SongModel;
 import bll.LogicFacade;
 import bll.SongFilter;
-import dal.CategoriesDAO;
+import dal.GenreDAO;
 import dal.PlaylistDAO;
 import dal.PlaylistSongDAO;
 import dal.SongDAO;
@@ -27,10 +27,11 @@ import dal.SongDAO;
 public class Manager implements LogicFacade {
 
     private final PlaylistDAO playListDAO;
-    private final SongDAO songDAO;
+    private final SongDAO SongDAO;
     private final SongFilter songSearcher;
     private final PlaylistSongDAO PlaylistSongInfo;
-    private final CategoriesDAO categoriesDAO;
+    private final GenreDAO GenreDAO;
+    
 
     /*
     Starter alle dal klasser
@@ -38,10 +39,10 @@ public class Manager implements LogicFacade {
     public Manager() throws IOException 
     {
         playListDAO = new PlaylistDAO();
-        songDAO = new SongDAO();
+        SongDAO = new SongDAO();
         songSearcher = new SongFilter();
         PlaylistSongInfo = new PlaylistSongDAO();
-        categoriesDAO = new CategoriesDAO();
+        GenreDAO = new GenreDAO();
     }
 
     @Override
@@ -60,31 +61,25 @@ public class Manager implements LogicFacade {
     @Override
     public List<SongModel> getAllSongs() //getter for sange
     {
-        return songDAO.getAllSongs();
-    }
-
-    @Override
-    public SongModel createSong(String title, String artist, String category, int playtime, String location) //Tilføjer sang til databasen
-    {
-        return songDAO.createSong(title, artist, category, playtime, location);
+        return SongDAO.getAllSongs();
     }
 
     @Override
     public void deleteSong(SongModel songToDelete) 
     {
         PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Fjerner sange fra databasen
-        songDAO.deleteSong(songToDelete); 
+        SongDAO.deleteSong(songToDelete); 
     }
 
 //    @Override
-//    public SongModel updateSong(SongModel song, String title, String artist, String category, int playtime, String location) {
-//        return songDAO.updateSong(song, title, artist, category, playtime, location);
-//    }
+    public SongModel updateSong(SongModel song, String title, String artist, String genre, String songlocation) {
+       return SongDAO.updateSong(song, title, artist, genre, songlocation);
+}
 
     @Override
-    public Playlist createPlaylist(String name) 
+    public Playlist createPlaylist(String title) 
     {
-        return playListDAO.createPlaylist(name);
+        return playListDAO.createPlaylist(title);
     }
 
     @Override
@@ -116,28 +111,25 @@ public class Manager implements LogicFacade {
     {
         return songSearcher.search(items, text);
     }
-
+    
     @Override
-    public List<String> getAllCategories() 
-    {
-        return categoriesDAO.getAllCategories();
+    public SongModel createSong(String title, String artist, String genre, String songlocation) {
+        return SongDAO.createSong(title, artist, genre, songlocation);  
     }
 
     @Override
-    public void createCategory(String name) 
-    {
-        categoriesDAO.createCategory(name);
+    public List<String> getAllGenre() {
+        return GenreDAO.getAllGenre();
     }
 
     @Override
-    public void deleteCategory(String name) 
-    {
-        categoriesDAO.deleteCategory(name);
+    public void createGenre(String title) {
+        GenreDAO.createGenre(title);
     }
 
     @Override
-    public SongModel updateSong(SongModel songToDelete, String title, String artist, String category, int playtime, String location) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteGenre(String title) {
+        GenreDAO.deleteGenre(title);
     }
 
 }

@@ -44,7 +44,7 @@ public class Import_mp3Controller implements Initializable
     @FXML
     private TextField time;
     @FXML
-    private TextField categoryChoice;
+    private TextField genreChoice;
     @FXML
     private TextField file;
     @FXML
@@ -61,30 +61,30 @@ public class Import_mp3Controller implements Initializable
     
     
 
-    @FXML
-    private void addSong(ActionEvent event, int i) 
-    {
-//        int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
+//    @FXML
+//    private void addSong(ActionEvent event, int i) 
+//    {
+//       int i = toIntExact(Math.round(MusicPlayer.getMusic().getDuration().toSeconds())); 
 //        String name = nameField.getText().trim();
-        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
-        { 
-            if (!isEditing) 
-            { 
-                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-                errorLabel.setText("Success: Successfully created the song");
-            } 
-            else 
-            {
-                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
-                errorLabel.setText("Success: Successfully updated the song");
-            }
-        } else 
-        {
-            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
-        }
-
-        controller1.refreshSongList(isEditing); 
-    }
+//        if (title != null && title.getLength() > 0 && title.getLength() < 50 && title.getText() != null && title.getText().length() != 0 && i > 0) 
+//        { 
+//            if (!isEditing) 
+//            { 
+//                SongModel.createSong(title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
+//                errorLabel.setText("Success: Successfully created the song");
+//            } 
+//            else 
+//            {
+//                SongModel.updateSong(songToEdit, title, artistField.getText(), categoryChoice.getSelectionModel().getSelectedItem(), i, title.getText());
+//                errorLabel.setText("Success: Successfully updated the song");
+//            }
+//        } else 
+//        {
+//            errorLabel.setText("Error: Check if you have inserted a name and selected the correct file");
+//        }
+//
+//        controller1.refreshSongList(isEditing); 
+//    }
     
     @FXML
     private void moreCat(ActionEvent event) 

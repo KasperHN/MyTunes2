@@ -49,8 +49,8 @@ public class SongDAO {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) { // Skaber og tilføjer sang objecter til array listen.
-                SongModel song = new SongModel(rs.getString("name"), rs.getString("artist"), rs.getString("category"), rs.getInt("time"), rs.getString("url"), rs.getInt("id"));
-                allSongs.add(song);
+ //               song = new Song(rs.getString("songid"), rs.getString("artist"), rs.getString("title"), rs.getInt("genre"), rs.getString(""));
+ //               allSongs.add(song);
             }
             return allSongs; //Returnere en fuld liste.
         } catch (SQLServerException ex) {
@@ -65,25 +65,36 @@ public class SongDAO {
     /*
     Laver en sang og tilføjer den til databasen.
      */
-    public SongModel createSong(String title, String artist, String category, int playtime, String location) {
-        String sql = "INSERT INTO Song(name,artist,category,time,url) VALUES (?,?,?,?,?)";
-        try (Connection con = ds.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, title);
-            ps.setString(2, artist);
-            ps.setString(3, category);
-            ps.setInt(4, playtime);
-            ps.setString(5, location);
-            ps.addBatch();
-            ps.executeBatch();
-        } catch (SQLServerException ex) {
-            System.out.println(ex);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        SongModel song = new SongModel(title, artist, category, playtime, location, getNewestSongID()); //Laver et sang object
-        return song; //Returnere sang objected
-    }
+    //public SongModel createSong(Song song) throws DalException 
+//    {
+//        String sql = "INSERT INTO Song(songid,artist,title,genre,songlocation) VALUES (?,?,?,?,?)";
+//        try (Connection con = ds.getConnection()) {
+//            PreparedStatement ps = con.prepareStatement(sql);
+           
+//            ps.setString(1, SongModel.songid());
+//            ps.setString(2, SongModel.artist());
+//            ps.setString(3, SongModel.title());
+//            ps.setString(4, SongModel.genre());
+//            ps.setString(5, SongModel.songlocation);
+//            ps.addBatch();
+//            ps.executeBatch();
+//        } catch (SQLServerException ex) {
+//            System.out.println(ex);
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//        SongModel song = new SongModel(songid, artist, title, genre, songlocation, getNewestSongID()); //Laver et sang object
+//        return song; //Returnere sang objected
+        
+        // Attempts to update the database
+//            int affectedRows = ps.executeUpdate();
+//            if (affectedRows < 1)
+//            {
+//                throw new SQLException("Can't save song");
+//            }
+//    }
+    
+   
 
     /*
     Getter top sang IDerne fra databasen så det er muligt at skabe sang objected.
@@ -91,11 +102,11 @@ public class SongDAO {
     private int getNewestSongID() {
         int newestID = -1; // Vidkårligt ID ikke fundet.
         try (Connection con = ds.getConnection()) {
-            String query = "SELECT TOP(1) * FROM Song ORDER by id desc"; //Vælg det højeste ID 
+            String query = "SELECT TOP(1) * FROM Song ORDER by songid desc"; //Vælg det højeste ID 
             PreparedStatement preparedStmt = con.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
-                newestID = rs.getInt("id");
+                newestID = rs.getInt("songid");
             }
             return newestID;
         } catch (SQLServerException ex) {
@@ -109,7 +120,7 @@ public class SongDAO {
 
     public void deleteSong(SongModel songToDelete) {
         try (Connection con = ds.getConnection()) {
-            String query = "DELETE from Song WHERE id = ?";
+            String query = "DELETE from Song WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, songToDelete.getID());
             preparedStmt.execute();
@@ -118,5 +129,13 @@ public class SongDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+    }
+
+    public SongModel updateSong(SongModel song, String title, String artist, String genre, String songlocation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public SongModel createSong(String title, String artist, String genre, String songlocation) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

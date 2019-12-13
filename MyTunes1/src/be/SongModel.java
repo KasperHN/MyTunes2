@@ -43,22 +43,16 @@ public class SongModel
 
     private String title; // Title på sang
     private String artist; // Kunstner af sang
-    private String category; // Katagori af sang
-    private final int playtime; // Sanges spilletid i sekunder
-    private final String playtimeString; // overstående men i minutter
-    private String location; // Sanges lokation
+    private String genre; 
+    private String songlocation; // Sanges lokation
     private final int ID; // Unique Sang ID i Databasen
-    private int locationInList; // Skjuler ID for brugeren. Hovedsageligt brugt til at flytte på Sange i Databasen
-    private int IDinsideList = 0; // Synlig ID for brugeren.
 
-    public SongModel(String title, String artist, String category, int playtime, String location, int ID) 
+    public SongModel(String title, String artist, String genre,String songlocation, int ID) 
     {
         this.title = title;
         this.artist = artist;
-        this.category = category;
-        this.playtime = playtime;
-        playtimeString = getPlaytimeString();
-        this.location = location;
+        this.genre = genre;
+        this.songlocation = songlocation;
         this.ID = ID;
     }
 
@@ -68,14 +62,6 @@ public class SongModel
 
     public String getTitle() {
         return title;
-    }
-
-    public int getIDinsideList() {
-        return IDinsideList;
-    }
-
-    public void setIDinsideList(int IDinsideList) {
-        this.IDinsideList = IDinsideList;
     }
 
     public void setTitle(String title) {
@@ -90,54 +76,32 @@ public class SongModel
         this.artist = artist;
     }
 
-    public int getLocationInList() {
-        return locationInList;
+//    public int getLocationInList() {
+//        return locationInList;
+//    }
+
+//    public void setLocationInList(int locationInList) {
+//        this.locationInList = locationInList;
+//    }
+
+    public String getGenre() {
+        return genre;
     }
 
-    public void setLocationInList(int locationInList) {
-        this.locationInList = locationInList;
+    public void setGenre(String category) {
+        this.genre = genre;
     }
 
-    public String getCategory() {
-        return category;
+    public String getSongLocation() {
+        return songlocation;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public int getPlaytime() {
-        return playtime;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
+    public void setSongLocation(String location) {
+        this.songlocation = location;
     }
 
     @Override
     public String toString() {
         return title;
-    }
-    public String getPlaytimeString() 
-    {
-        String minutesString;
-        String secondString;
-        int minutes = playtime / 60;
-        if (minutes < 10) {
-            minutesString = "0" + minutes;
-        } else {
-            minutesString = "" + minutes;
-        }
-        int seconds = playtime % 60;
-        if (10 > seconds) {
-            secondString = "0" + seconds;
-        } else {
-            secondString = "" + seconds;
-        }
-        return minutesString + ":" + secondString;
     }
 }

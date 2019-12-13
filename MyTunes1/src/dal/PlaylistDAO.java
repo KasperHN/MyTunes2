@@ -52,10 +52,10 @@ public class PlaylistDAO {
             Statement statement = con.createStatement();
             ResultSet rs = statement.executeQuery(sqlStatement);
             while (rs.next()) {
-                String name = rs.getString("name");
-                int id = rs.getInt("id");
-                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(id); // Tilføjer alle sange til playliste
-                Playlist pl = new Playlist(allSongs.size(), countTotalTime(allSongs), name, id); // Skaber et nyt playlist object.
+                String title = rs.getString("title");
+                int songid = rs.getInt("songid");
+                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(songid); // Tilføjer alle sange til playliste
+                Playlist pl = new Playlist(allSongs.size(), title, songid); // Skaber et nyt playlist object.
                 pl.setSongList(allSongs); // Opstiller sang liste
                 allPlaylists.add(pl); // Tilføjer playliste til playlist tabellen.
             }
@@ -68,26 +68,14 @@ public class PlaylistDAO {
             return null;
         }
     }
-
-    /*
-    Tæller alle sekunder sammen på en playliste.
-     */
-    private int countTotalTime(List<SongModel> allSongs) {
-        int totalTime = 0;
-        for (SongModel allSong : allSongs) {
-            totalTime += allSong.getPlaytime();
-        }
-        return totalTime; //Returnere sekunder.
-    }
-
     /*
     Tilføjer playlist med givet navn.
      */
-    public Playlist createPlaylist(String name) {
-        String sql = "INSERT INTO Playlist(name) VALUES (?)";
+    public Playlist createPlaylist(String title) {
+        String sql = "INSERT INTO Playlist(title) VALUES (?)";
         try (Connection con = ds.getConnection()) {
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, name);
+            ps.setString(1, title);
             ps.addBatch();
             ps.executeBatch();
         } catch (SQLServerException ex) {
@@ -95,7 +83,7 @@ public class PlaylistDAO {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        Playlist playlist = new Playlist(0, 0, name, getNewestPlaylist()); //Skaber en playlist og specificere at der ikke findes nogen sange.
+        Playlist playlist = new Playlist(0, 0, title, getNewestPlaylist()); //Skaber en playlist og specificere at der ikke findes nogen sange.
         return playlist;
     }
 
@@ -105,11 +93,11 @@ public class PlaylistDAO {
     private int getNewestPlaylist() {
         int newestID = -1;
         try (Connection con = ds.getConnection()) {
-            String query = "SELECT TOP(1) * FROM Playlist ORDER by id desc";
+            String query = "SELECT TOP(1) * FROM Playlist ORDER by songid desc";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();
             while (rs.next()) {
-                newestID = rs.getInt("id");
+                newestID = rs.getInt("songid");
             }
             return newestID;
         } catch (SQLServerException ex) {
@@ -124,11 +112,11 @@ public class PlaylistDAO {
     /*
     Opdatere specificeret playliste med given navn.
      */
-    public void updatePlaylist(Playlist selectedItem, String name) {
+    public void updatePlaylist(Playlist selectedItem, String title) {
         try (Connection con = ds.getConnection()) {
-            String query = "UPDATE Playlist set name = ? WHERE id = ?";
+            String query = "UPDATE Playlist set title = ? WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-            preparedStmt.setString(1, name);
+            preparedStmt.setString(1, title);
             preparedStmt.setInt(2, selectedItem.getID());
             preparedStmt.executeUpdate();
         } catch (SQLServerException ex) {
@@ -143,7 +131,7 @@ public class PlaylistDAO {
      */
     public void deletePlaylist(Playlist play) {
         try (Connection con = ds.getConnection()) {
-            String query = "DELETE from Playlist WHERE id = ?";
+            String query = "DELETE from Playlist WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, play.getID());
             preparedStmt.execute();
