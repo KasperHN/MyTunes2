@@ -20,7 +20,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javax.print.attribute.standard.Media;
-import javax.swing.text.html.HTML.Tag;
+//import javax.swing.text.html.HTML.Tag;
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.audio.AudioFileIO;
 import org.jaudiotagger.tag.FieldKey;
@@ -51,7 +51,7 @@ public abstract class Import_mp3Controller implements Initializable
     @FXML
     private TextField genreChoice;
     @FXML
-    private TextField file;
+    private TextField filepath;
     @FXML
     private Button btnCancel;
     @FXML
@@ -97,7 +97,7 @@ public abstract class Import_mp3Controller implements Initializable
             time.setText(Integer.toString(f.getAudioHeader().getTrackLength()));
             artistField.setText(t.getFirst(FieldKey.ARTIST));
             title.setText(t.getFirst(FieldKey.TITLE));
-            file.setText(file.getPath());
+            filepath.setText(file.getPath());
             f.commit();
 
         } catch (Exception e)
