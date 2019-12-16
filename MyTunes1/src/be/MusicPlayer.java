@@ -6,6 +6,7 @@
 package be;
 
 
+
 /**
  *
  * @author Nicklas, Kasper, Christian og Jonas
@@ -18,6 +19,7 @@ public class MusicPlayer
     public final static int FINISHED = 3;
 
     public MusicPlayer() {
+        
     }
 
     public static int getNOTSTARTED() {
@@ -34,7 +36,5 @@ public class MusicPlayer
 
     public static int getFINISHED() {
         return FINISHED;
-    }
-
-   
+    }   
 }
