@@ -14,8 +14,7 @@ import javafx.scene.media.MediaPlayer;
  * @author chri9
  */
 public class MyTunesPlay {
-    
-    private MyTunesPlay myTunesPlay;
+private MediaPlayer myTunesPlay;
     
     
     
@@ -25,11 +24,12 @@ public class MyTunesPlay {
     myTunesPlay.playMyTunes();
     
    }
-   public void playMyTunes() { 
-   String bip = "C:\\Users\\chri9\\OneDrive\\Dokumenter\\NetBeansProjects\\MyTunes2\\MyTunes1\\Music\\Castille_Soap.mp3";
+   public void playMyTunes() 
+   { 
+   String bip = "C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/Music/Castille_Soap.mp3";
    Media hit = new Media(bip);
-   myTunesPlay = new MyTunesPlay(hit);
+   myTunesPlay = new MediaPlayer(hit);
    myTunesPlay.play();
-           }
+   }
     
 }

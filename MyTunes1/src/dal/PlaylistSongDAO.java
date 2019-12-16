@@ -191,4 +191,8 @@ public class PlaylistSongDAO {
 //            System.out.println(ex);
 //        }
 //    }
+
+    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
