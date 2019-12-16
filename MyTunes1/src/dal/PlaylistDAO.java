@@ -16,7 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import be.Playlist;
-import be.SongModel;
+import be.Song;
 
 /**
  *

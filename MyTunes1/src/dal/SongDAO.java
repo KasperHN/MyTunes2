@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import be.SongModel;
+import be.Song;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,8 +44,8 @@ public class SongDAO {
     /*
     Getter alle sange i databasen.
      */
-    public List<SongModel> getAllSongs() {
-        ArrayList<SongModel> allSongs = new ArrayList<>();
+    public List<Song> getAllSongs() {
+        ArrayList<Song> allSongs = new ArrayList<>();
         try (Connection con = ds.getConnection()) {
             String sqlStatement = "SELECT * FROM Song";
             Statement statement = con.createStatement();
@@ -54,7 +54,7 @@ public class SongDAO {
             { 
 // Skaber og tilføjer sang objecter til array listen.
                 
-                SongModel sm = new SongModel();
+                Song sm = new Song();
                 sm.setSongid(rs.getInt("songid"));
 
                 allSongs.add(sm);
@@ -73,7 +73,7 @@ public class SongDAO {
     /*
     Laver en sang og tilføjer den til databasen.
      */
-    public void createSong(SongModel song) 
+    public void createSong(Song song) 
     {
         
         try (Connection con = ds.getConnection()) {
@@ -127,7 +127,7 @@ public class SongDAO {
         }
     }
 
-    public void deleteSong(SongModel songToDelete) {
+    public void deleteSong(Song songToDelete) {
         try (Connection con = ds.getConnection()) {
             String query = "DELETE from Song WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -140,11 +140,11 @@ public class SongDAO {
         }
     }
 
-    public SongModel updateSong(SongModel song, String title, String artist, String genre, String songlocation) {
+    public Song updateSong(Song song, String title, String artist, String genre, String songlocation) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public SongModel createSong(String title, String artist, String genre, String songlocation) {
+    public Song createSong(String title, String artist, String genre, String songlocation) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

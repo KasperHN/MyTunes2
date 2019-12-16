@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import be.Playlist;
-import be.SongModel;
+import be.Song;
 
 /**
  *
@@ -192,7 +192,7 @@ public class PlaylistSongDAO {
 //        }
 //    }
 
-    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
+    public void editSongPosition(Playlist selectedItem, Song selected, Song exhangeWith) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

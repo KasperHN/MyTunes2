@@ -5,8 +5,7 @@
  */
 package gui.controllers;
 
-import be.MusicPlayer;
-import be.SongModel;
+import be.Song;
 import java.io.File;
 import java.io.IOException;
 import static java.lang.Math.toIntExact;
@@ -69,7 +68,7 @@ public abstract class Import_mp3Controller implements Initializable
         
     }
     
-    void setInfo(SongModel selectedItem) 
+    void setInfo(Song selectedItem) 
     {
         
         
