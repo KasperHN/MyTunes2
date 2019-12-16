@@ -35,9 +35,9 @@ private MediaPlayer myTunesPlay;
 
     
    
-    public void playMyTunes() throws RuntimeException
+    public void playMyTunes()
     { 
-        File file = new File("c:/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Castille_Soap.mp3");
+        File file = new File("/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Castille_Soap.mp3");
         String bip;
         bip = file.toURI().toString();
         Media hit = new Media(bip);
@@ -51,4 +51,3 @@ private MediaPlayer myTunesPlay;
 
 
 //"file//C://Users//kaspe//Documents//GitHub//MyTunes2//MyTunes1//Music//Castille_Soap.mp3";
-//bip = file.toURI().toString();
