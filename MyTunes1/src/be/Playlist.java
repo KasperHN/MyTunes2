@@ -13,23 +13,23 @@ import java.util.List;
  */
 public class Playlist {
 
-    private List<SongModel> Playlist; //Playlist
+    private List<Song> Playlist; //Playlist
     private int songCount; // Antal sange i Playlist
     private final int songid; // Unique playlist ID
     private String title;
 
-    public Playlist(List<SongModel> Playlist, int songCount, int songid, String title) {
+    public Playlist(List<Song> Playlist, int songCount, int songid, String title) {
         this.Playlist = Playlist;
         this.songCount = songCount;
         this.songid = songid;
         this.title = title;
     }
 
-    public List<SongModel> getPlaylist() {
+    public List<Song> getPlaylist() {
         return Playlist;
     }
 
-    public void setPlaylist(List<SongModel> Playlist) {
+    public void setPlaylist(List<Song> Playlist) {
         this.Playlist = Playlist;
     }
 

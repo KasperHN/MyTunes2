@@ -8,7 +8,7 @@ package bll;
 import java.util.List;
 import javafx.collections.ObservableList;
 import be.Playlist;
-import be.SongModel;
+import be.Song;
 
 /**
  *
@@ -39,42 +39,42 @@ public interface LogicFacade {
     /*
     Laver en liste for nye sange
      */
-    public List<SongModel> getAllSongs();
+    public List<Song> getAllSongs();
 
     /*
     Skaber paramterne for sangen
      */
-    public SongModel createSong(String title, String artist, String genre, String songlocation);
+    public Song createSong(String title, String artist, String genre, String songlocation);
 
     /*
     Opdatere sange med givne parametere
      */
-    public SongModel updateSong(SongModel songToDelete, String title, String artist, String genre, String songlocation);
+    public Song updateSong(Song songToDelete, String title, String artist, String genre, String songlocation);
 
     /*
     Sletter specificerede sange
      */
-    public void deleteSong(SongModel songToDelete);
+    public void deleteSong(Song songToDelete);
 
     /*
     Tilføjer sange til en specificeret Playliste
      */
-    public SongModel addToPlaylist(Playlist playlist, SongModel song);
+    public Song addToPlaylist(Playlist playlist, Song song);
 
     /*
     Fjerner sange fra specificeret liste
      */
-    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong);
+    public void removeSongFromPlaylist(Playlist selectedItem, Song selectedSong);
 
     /*
     Ændre positionen for sangen på playlisten
      */
-    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith);
+    public void editSongPosition(Playlist selectedItem, Song selected, Song exhangeWith);
 
     /*
     Søger sange som matcher søge kriteriet
      */
-    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text);
+    public ObservableList<Song> search(ObservableList<Song> items, String text);
 
     /*
     Getter alle Katagorierne

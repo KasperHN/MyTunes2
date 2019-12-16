@@ -5,7 +5,7 @@
  */
 package bll;
 
-import be.SongModel;
+import be.Song;
 import java.util.List;
 import dal.SongDAO;
 import java.io.IOException;
@@ -18,15 +18,15 @@ import javafx.collections.ObservableList;
  */
 public class SongBLL {
 
-    private ObservableList<SongModel> songsAll;
+    private ObservableList<Song> songsAll;
     private SongDAO songdao;
     private static SongBLL instance;
 
-    public List<SongModel> getAllSongs() {
+    public List<Song> getAllSongs() {
         return songdao.getAllSongs();
     }
 
-    public void createSong(SongModel song) {
+    public void createSong(Song song) {
         songdao.createSong(song);
     }
 

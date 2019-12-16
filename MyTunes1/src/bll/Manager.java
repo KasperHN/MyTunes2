@@ -9,7 +9,7 @@ import be.Playlist;
 import java.io.IOException;
 import java.util.List;
 import javafx.collections.ObservableList;
-import be.SongModel;
+import be.Song;
 import dal.GenreDAO;
 import dal.PlaylistDAO;
 import dal.PlaylistSongDAO;
@@ -56,20 +56,20 @@ public class Manager implements LogicFacade {
 //    }
 
     @Override
-    public List<SongModel> getAllSongs() //getter for sange
+    public List<Song> getAllSongs() //getter for sange
     {
         return SongDAO.getAllSongs();
     }
 
     @Override
-    public void deleteSong(SongModel songToDelete) 
+    public void deleteSong(Song songToDelete) 
     {
        // PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Fjerner sange fra databasen
         SongDAO.deleteSong(songToDelete); 
     }
 
 //    @Override
-    public SongModel updateSong(SongModel song, String title, String artist, String genre, String songlocation) {
+    public Song updateSong(Song song, String title, String artist, String genre, String songlocation) {
        return SongDAO.updateSong(song, title, artist, genre, songlocation);
 }
 
@@ -104,13 +104,13 @@ public class Manager implements LogicFacade {
 //    }
 
     @Override
-    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) 
+    public ObservableList<Song> search(ObservableList<Song> items, String text) 
     {
         return songSearcher.search(items, text);
     }
     
     @Override
-    public SongModel createSong(String title, String artist, String genre, String songlocation) {
+    public Song createSong(String title, String artist, String genre, String songlocation) {
         return SongDAO.createSong(title, artist, genre, songlocation);  
     }
 
@@ -145,17 +145,17 @@ public class Manager implements LogicFacade {
     }
 
     @Override
-    public SongModel addToPlaylist(Playlist playlist, SongModel song) {
+    public Song addToPlaylist(Playlist playlist, Song song) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
+    public void removeSongFromPlaylist(Playlist selectedItem, Song selectedSong) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
+    public void editSongPosition(Playlist selectedItem, Song selected, Song exhangeWith) {
         PlaylistSongInfo.editSongPosition(selectedItem, selected, exhangeWith);
     }
  

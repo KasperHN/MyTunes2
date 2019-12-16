@@ -5,7 +5,7 @@
  */
 package bll;
 
-import be.SongModel;
+import be.Song;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,14 +17,14 @@ public class SongFilter
 {
     
 
-    private ObservableList<SongModel> temp = FXCollections.observableArrayList();
+    private ObservableList<Song> temp = FXCollections.observableArrayList();
 
     /*
     Søger gennem alle sang titler på String.
      */
-    public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) {
+    public ObservableList<Song> search(ObservableList<Song> items, String text) {
         temp.clear();
-        for (SongModel item : items) {
+        for (Song item : items) {
             if (item.getTitle().toLowerCase().startsWith(text.toLowerCase())) {
                 temp.add(item);
             }
