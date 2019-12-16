@@ -33,37 +33,37 @@ private SongBLL sb;
    
 
 @FXML
-    private TableView<SongModel> SongList;
- @FXML
-    private TableColumn<SongModel, String> C1;
-  @FXML
-    private TableColumn<SongModel, String> C2;
-   @FXML
-    private TableColumn<SongModel, String> C3;
+private TableView<SongModel> SongList;
+@FXML
+private TableColumn<SongModel, String> C1;
+@FXML
+private TableColumn<SongModel, String> C2;
+@FXML
+private TableColumn<SongModel, String> C3;
     
     
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-          try
-        {
-            sb = SongBLL.getInstance();
+/**
+* Initializes the controller class.
+* @param url
+* @param rb
+*/
+@Override
+public void initialize(URL url, ResourceBundle rb) {
+    try
+    {
+    sb = SongBLL.getInstance();
           
-        } catch (Exception ex)
-        {
-            Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    } catch (Exception ex)
+    {
+    Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
+    }
       
         
-        SongList.setItems((ObservableList<SongModel>) sb.getAllSongs());
-        C1.setCellValueFactory(new PropertyValueFactory("title"));
-        C2.setCellValueFactory(new PropertyValueFactory("artist"));
-        C3.setCellValueFactory(new PropertyValueFactory("genre"));
-        sb.loadSongs();
+    SongList.setItems((ObservableList<SongModel>) sb.getAllSongs());
+    C1.setCellValueFactory(new PropertyValueFactory("title"));
+    C2.setCellValueFactory(new PropertyValueFactory("artist"));
+    C3.setCellValueFactory(new PropertyValueFactory("genre"));
+    sb.loadSongs();
     }    
     
 }
