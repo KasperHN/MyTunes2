@@ -11,8 +11,6 @@ import java.util.List;
 import javafx.collections.ObservableList;
 import be.SongModel;
 import be.SongModel;
-import bll.LogicFacade;
-import bll.SongFilter;
 import dal.GenreDAO;
 import dal.PlaylistDAO;
 import dal.PlaylistSongDAO;
@@ -45,18 +43,18 @@ public class Manager implements LogicFacade {
         GenreDAO = new GenreDAO();
     }
 
-    @Override
-    public List<Playlist> getAllPlaylists()  //getter for playliste
-    {
-        return playListDAO.getAllPlaylists();
-    }
+//    @Override
+//    public List<Playlist> getAllPlaylists()  //getter for playliste
+//    {
+//        return playListDAO.getAllPlaylists();
+//    }
 
-    @Override
-    public void deletePlaylist(Playlist play) 
-    {
-        PlaylistSongInfo.deleteFromPlaylistSongsEverything(play); // Fjerner sange fra playliste
-        playListDAO.deletePlaylist(play); 
-    }
+//    @Override
+//    public void deletePlaylist(Playlist play) 
+//    {
+//        PlaylistSongInfo.deleteFromPlaylistSongsEverything(play); // Fjerner sange fra playliste
+//        playListDAO.deletePlaylist(play); 
+//    }
 
     @Override
     public List<SongModel> getAllSongs() //getter for sange
@@ -67,7 +65,7 @@ public class Manager implements LogicFacade {
     @Override
     public void deleteSong(SongModel songToDelete) 
     {
-        PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Fjerner sange fra databasen
+       // PlaylistSongInfo.deleteFromPlaylistSongsEverything(songToDelete);// Fjerner sange fra databasen
         SongDAO.deleteSong(songToDelete); 
     }
 
@@ -76,23 +74,23 @@ public class Manager implements LogicFacade {
        return SongDAO.updateSong(song, title, artist, genre, songlocation);
 }
 
-    @Override
-    public Playlist createPlaylist(String title) 
-    {
-        return playListDAO.createPlaylist(title);
-    }
+//    @Override
+//    public Playlist createPlaylist(String title) 
+//    {
+//        return playListDAO.createPlaylist(title);
+//    }
 
-    @Override
-    public SongModel addToPlaylist(Playlist playlist, SongModel song) 
-    {
-        return PlaylistSongInfo.addToPlaylist(playlist, song);
-    }
+//    @Override
+//    public SongModel addToPlaylist(Playlist playlist, SongModel song) 
+//    {
+//        return PlaylistSongInfo.addToPlaylist(playlist, song);
+//    }
 
-    @Override
-    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) 
-    {
-        PlaylistSongInfo.removeSongFromPlaylist(selectedItem, selectedSong);
-    }
+//    @Override
+//    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) 
+//    {
+//        PlaylistSongInfo.removeSongFromPlaylist(selectedItem, selectedSong);
+//    }
 
     @Override
     public void editPlaylist(Playlist get, String text) 
@@ -100,11 +98,11 @@ public class Manager implements LogicFacade {
         playListDAO.updatePlaylist(get, text);
     }
 
-    @Override
-    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) 
-    {
-        PlaylistSongInfo.editSongPosition(selectedItem, selected, exhangeWith);
-    }
+//    @Override
+//    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) 
+//    {
+//        PlaylistSongInfo.editSongPosition(selectedItem, selected, exhangeWith);
+//    }
 
     @Override
     public ObservableList<SongModel> search(ObservableList<SongModel> items, String text) 
@@ -130,6 +128,36 @@ public class Manager implements LogicFacade {
     @Override
     public void deleteGenre(String title) {
         GenreDAO.deleteGenre(title);
+    }
+
+    @Override
+    public List<Playlist> getAllPlaylists() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deletePlaylist(Playlist play) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Playlist createPlaylist(String title) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public SongModel addToPlaylist(Playlist playlist, SongModel song) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeSongFromPlaylist(Playlist selectedItem, SongModel selectedSong) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void editSongPosition(Playlist selectedItem, SongModel selected, SongModel exhangeWith) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

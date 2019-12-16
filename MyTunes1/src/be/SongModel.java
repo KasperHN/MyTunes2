@@ -8,11 +8,6 @@
 
 package be;
 
-import bll.LogicFacade;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-
 
 /**
  *
@@ -21,20 +16,30 @@ import javafx.collections.ObservableList;
 
 public class SongModel 
 {
-    private String title; // Title på sang
-    private String artist; // Kunstner af sang
-    private String genre; 
-    private String songlocation; // Sanges lokation
-    private int songid; // Unique Sang ID i Databasen
+    public String title; // Title på sang
+    public String artist; // Kunstner af sang
+    public String genre; 
+    public String songlocation; // Sanges lokation
+   public int songid; // Unique Sang ID i Databasen
+    public String path;
 
-    public SongModel(String title, String artist, String genre, String songlocation, int songid) {
-        this.title = title;
-        this.artist = artist;
-        this.genre = genre;
-        this.songlocation = songlocation;
-        this.songid = songid;
+//    public SongModel(String title, String artist, String genre, String songlocation, int songid) {
+//        this.title = title;
+//        this.artist = artist;
+//        this.genre = genre;
+//        this.songlocation = songlocation;
+//        this.songid = songid;
+//        this.path = path;
+//    }
+ public String getFilePath()
+    {
+        return path;
     }
-
+ 
+  public  void setFilePath(String filePath)
+    {
+        this.path = path;
+    }
     public String getTitle() {
         return title;
     }

@@ -41,51 +41,51 @@ public class PlaylistDAO {
         ds.setServerName(infoList.get(4));
     }
 
-    /*
-    Henter alle Playlister fra Databasen
-     */
-    public List<Playlist> getAllPlaylists() {
-        List<Playlist> allPlaylists = new ArrayList<>(); // Tilføjer playliste tabel.
-
-        try (Connection con = ds.getConnection()) {
-            String sqlStatement = "SELECT * FROM Playlist";
-            Statement statement = con.createStatement();
-            ResultSet rs = statement.executeQuery(sqlStatement);
-            while (rs.next()) {
-                String title = rs.getString("title");
-                int songid = rs.getInt("songid");
-                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(songid); // Tilføjer alle sange til playliste
-                Playlist pl = new Playlist(allSongs.size(), title, songid); // Skaber et nyt playlist object.
-                pl.setSongList(allSongs); // Opstiller sang liste
-                allPlaylists.add(pl); // Tilføjer playliste til playlist tabellen.
-            }
-            return allPlaylists; // Returnere playlisten.
-        } catch (SQLServerException ex) {
-            System.out.println(ex);
-            return null;
-        } catch (SQLException ex) {
-            System.out.println(ex);
-            return null;
-        }
-    }
-    /*
-    Tilføjer playlist med givet navn.
-     */
-    public Playlist createPlaylist(String title) {
-        String sql = "INSERT INTO Playlist(title) VALUES (?)";
-        try (Connection con = ds.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, title);
-            ps.addBatch();
-            ps.executeBatch();
-        } catch (SQLServerException ex) {
-            System.out.println(ex);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        Playlist playlist = new Playlist(0, 0, title, getNewestPlaylist()); //Skaber en playlist og specificere at der ikke findes nogen sange.
-        return playlist;
-    }
+//    /*
+//    Henter alle Playlister fra Databasen
+//     */
+//    public List<Playlist> getAllPlaylists() {
+//        List<Playlist> allPlaylists = new ArrayList<>(); // Tilføjer playliste tabel.
+//
+//        try (Connection con = ds.getConnection()) {
+//            String sqlStatement = "SELECT * FROM Playlist";
+//            Statement statement = con.createStatement();
+//            ResultSet rs = statement.executeQuery(sqlStatement);
+//            while (rs.next()) {
+//                String title = rs.getString("title");
+//                int songid = rs.getInt("songid");
+//                List<SongModel> allSongs = PlaylistSongInfo.getPlaylistSongs(songid); // Tilføjer alle sange til playliste
+//                Playlist pl = new Playlist(allSongs.size(), title, songid); // Skaber et nyt playlist object.
+//                pl.setSongList(allSongs); // Opstiller sang liste
+//                allPlaylists.add(pl); // Tilføjer playliste til playlist tabellen.
+//            }
+//            return allPlaylists; // Returnere playlisten.
+//        } catch (SQLServerException ex) {
+//            System.out.println(ex);
+//            return null;
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//            return null;
+//        }
+//    }
+//    /*
+//    Tilføjer playlist med givet navn.
+//     */
+//    public Playlist createPlaylist(String title) {
+//        String sql = "INSERT INTO Playlist(title) VALUES (?)";
+//        try (Connection con = ds.getConnection()) {
+//            PreparedStatement ps = con.prepareStatement(sql);
+//            ps.setString(1, title);
+//            ps.addBatch();
+//            ps.executeBatch();
+//        } catch (SQLServerException ex) {
+//            System.out.println(ex);
+//        } catch (SQLException ex) {
+//            System.out.println(ex);
+//        }
+//        Playlist playlist = new Playlist(0, 0, title, getNewestPlaylist()); //Skaber en playlist og specificere at der ikke findes nogen sange.
+//        return playlist;
+//    }
 
     /*
     Getter den nyeste Playliste ID i række til at skabe en ny playliste.
@@ -117,7 +117,7 @@ public class PlaylistDAO {
             String query = "UPDATE Playlist set title = ? WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString(1, title);
-            preparedStmt.setInt(2, selectedItem.getID());
+            preparedStmt.setInt(2, selectedItem.getSongCount());
             preparedStmt.executeUpdate();
         } catch (SQLServerException ex) {
             System.out.println(ex);
@@ -133,7 +133,7 @@ public class PlaylistDAO {
         try (Connection con = ds.getConnection()) {
             String query = "DELETE from Playlist WHERE songid = ?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
-            preparedStmt.setInt(1, play.getID());
+            preparedStmt.setInt(1, play.getSongCount());
             preparedStmt.execute();
         } catch (SQLServerException ex) {
             System.out.println(ex);
