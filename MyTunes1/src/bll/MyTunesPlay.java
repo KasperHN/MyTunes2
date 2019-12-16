@@ -5,6 +5,10 @@
  */
 package bll;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -31,12 +35,19 @@ public class MyTunesPlay {
 
     
    
-   public void playMyTunes() 
+   public void playMyTunes()
     { 
-        String bip = "C:\\Users\\kaspe\\Documents\\GitHub\\MyTunes2\\MyTunes1\\MusicCastille_Soap.mp3";
+        File file = new File("file:/Music/Castille_Soap.mp3");
+        String bip;
+        bip = file.toURI().toString();
         Media hit = new Media(bip);
         myTunesPlay = new MediaPlayer(hit);
         myTunesPlay.play();
+        System.out.println(bip);
+        
     }
     
 }
+
+
+//"file//C://Users//kaspe//Documents//GitHub//MyTunes2//MyTunes1//Music//Castille_Soap.mp3";
