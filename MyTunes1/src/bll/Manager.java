@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.List;
 import javafx.collections.ObservableList;
 import be.SongModel;
-import be.SongModel;
 import bll.LogicFacade;
 import bll.SongFilter;
 import dal.GenreDAO;

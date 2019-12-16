@@ -20,7 +20,7 @@ public class SongModel
     public String artist; // Kunstner af sang
     public String genre; 
     public String songlocation; // Sanges lokation
-   public int songid; // Unique Sang ID i Databasen
+    public int songid; // Unique Sang ID i Databasen
     public String path;
 
 //    public SongModel(String title, String artist, String genre, String songlocation, int songid) {
@@ -78,7 +78,6 @@ public class SongModel
 
     public void setSongid(int songid) {
         this.songid = songid;
-    }
-    
+    }    
 }
    
