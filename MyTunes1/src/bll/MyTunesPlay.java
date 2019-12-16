@@ -6,7 +6,6 @@
 package bll;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.media.Media;
@@ -21,23 +20,24 @@ public class MyTunesPlay {
 
 
     
-    private MediaPlayer myTunesPlay;
+private MediaPlayer myTunesPlay;
     
     
     
-   public static void main(String[] args)
-   {
-    MyTunesPlay myTunesPlay = new MyTunesPlay();
-    myTunesPlay.playMyTunes();
+    public static void main(String[] args)
+    {
     
-   }
+        MyTunesPlay myTunesPlay = new MyTunesPlay();
+        myTunesPlay.playMyTunes();
+    
+    }
     
 
     
    
-   public void playMyTunes()
+    public void playMyTunes() throws RuntimeException
     { 
-        File file = new File("file:/Music/Castille_Soap.mp3");
+        File file = new File("c:/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Castille_Soap.mp3");
         String bip;
         bip = file.toURI().toString();
         Media hit = new Media(bip);
@@ -51,3 +51,4 @@ public class MyTunesPlay {
 
 
 //"file//C://Users//kaspe//Documents//GitHub//MyTunes2//MyTunes1//Music//Castille_Soap.mp3";
+//bip = file.toURI().toString();
