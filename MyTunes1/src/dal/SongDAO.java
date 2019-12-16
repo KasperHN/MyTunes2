@@ -55,8 +55,8 @@ public class SongDAO {
 // Skaber og tilføjer sang objecter til array listen.
                 
                 Song sm = new Song();
-                sm.setSongid(rs.getInt("songid"));
-
+               // sm.setSongid(rs.getInt("songid"));
+                sm.setTitle(rs.getString("title"));
                 allSongs.add(sm);
                 
             }

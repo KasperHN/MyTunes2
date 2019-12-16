@@ -8,9 +8,7 @@ package gui;
 
 import be.Song;
 import bll.SongBLL;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import java.net.URL;
 
@@ -19,8 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -32,20 +32,30 @@ import javafx.scene.media.MediaPlayer;
  * @author chri9
  */
 public class FXMLController implements Initializable {
-private SongBLL sb;
+
    
 
 private MediaPlayer mediaPlay;
     @FXML
     private Button knapsåmeget;
+    @FXML
+    private TableColumn<Song, String> C1;
+    @FXML
+    private TableView<Song> songlist;
     
 /**
 * Initializes the controller class.
 * @param url
 * @param rb
 */
+    private SongBLL sb;
 @Override
 public void initialize(URL url, ResourceBundle rb) {
+  // songlist.setItems(sb.getAllSongs());
+    C1.setCellValueFactory(new PropertyValueFactory("title"));
+//    C2.setCellValueFactory(new PropertyValueFactory("artist"));
+//    C3.setCellValueFactory(new PropertyValueFactory("genre"));
+//   sb.loadSongs();
 }
     @FXML
     public void Knap(ActionEvent event)   
@@ -57,11 +67,7 @@ public void initialize(URL url, ResourceBundle rb) {
     }  
    
         
-//    SongList.setItems((ObservableList<SongModel>) sb.getAllSongs());
-//    C1.setCellValueFactory(new PropertyValueFactory("title"));
-//    C2.setCellValueFactory(new PropertyValueFactory("artist"));
-//    C3.setCellValueFactory(new PropertyValueFactory("genre"));
-//    sb.loadSongs();
+    
     }    
 
  

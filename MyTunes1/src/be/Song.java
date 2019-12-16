@@ -14,7 +14,7 @@ package be;
  * @author Nicklas, Kasper, Christian og Jonas
  */
 
-public class Song 
+public class Song
 {
     public String title; // Title på sang
     public String artist; // Kunstner af sang

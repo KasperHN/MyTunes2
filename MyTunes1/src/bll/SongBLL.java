@@ -9,6 +9,7 @@ import be.Song;
 import java.util.List;
 import dal.SongDAO;
 import java.io.IOException;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
@@ -21,8 +22,16 @@ public class SongBLL {
     private ObservableList<Song> songsAll;
     private SongDAO songdao;
     private static SongBLL instance;
+    
+    public SongBLL()
+            {
+              songsAll = FXCollections.observableArrayList();
+            }
+      public ObservableList<Song> getAllSongs() {
+        return songsAll;
+    }
 
-    public List<Song> getAllSongs() {
+    public List<Song> getAlleSongs() {
         return songdao.getAllSongs();
     }
 
