@@ -5,6 +5,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
    <children>
-      <Button fx:id="knapsåmeget" layoutX="152.0" layoutY="111.0" mnemonicParsing="false" onAction="#Knap" text="Button" />
+      <Button fx:id="knapsåmeget" layoutX="247.0" layoutY="69.0" mnemonicParsing="false" onAction="#Knap" text="Play" />
+      <Button fx:id="Stop" layoutX="165.0" layoutY="69.0" mnemonicParsing="false" text="Stop" />
+      <Button fx:id="Pause" layoutX="346.0" layoutY="69.0" mnemonicParsing="false" text="Pause" />
+      <Button fx:id="Previous" layoutX="69.0" layoutY="69.0" mnemonicParsing="false" text="Previous" />
+      <Button fx:id="Skip" layoutX="440.0" layoutY="69.0" mnemonicParsing="false" text="Skip" />
    </children>
 </AnchorPane>
