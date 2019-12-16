@@ -5,6 +5,8 @@
  */
 package be;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 /**
@@ -20,8 +22,11 @@ public class MusicPlayer
 
     public MusicPlayer() {
         
+        
+        
     }
-
+    
+        
     public static int getNOTSTARTED() {
         return NOTSTARTED;
     }
