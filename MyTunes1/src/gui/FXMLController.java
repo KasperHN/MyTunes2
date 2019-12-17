@@ -36,12 +36,15 @@ public class FXMLController implements Initializable {
    
 
 private MediaPlayer mediaPlay;
+    
     @FXML
     private Button knapsåmeget;
     @FXML
+
     private TableColumn<Song, String> C1;
     @FXML
     private TableView<Song> songlist;
+
     
 /**
 * Initializes the controller class.
@@ -60,14 +63,40 @@ public void initialize(URL url, ResourceBundle rb) {
     @FXML
     public void Knap(ActionEvent event)   
     {
-        String bip = "file:/C:/Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/Music/Castille_Soap.mp3";
+        String bip = "file:/C:/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Castille_Soap.mp3";
         Media hit = new Media(bip);
         mediaPlay = new MediaPlayer(hit);
         mediaPlay.play();
     }  
    
+    @FXML
+    public void Pause(ActionEvent event) {
+        mediaPlay.pause();
+    }
+
+    @FXML
+    public void Stop(ActionEvent event) {
+        mediaPlay.stop();
+    }
+    @FXML
+    public void Skip(ActionEvent event) {
         
+    }
     
+    @FXML
+    public void Previous(ActionEvent event) {
+        
+
+    }
+
+
+
+
+//    SongList.setItems((ObservableList<SongModel>) sb.getAllSongs());
+//    C1.setCellValueFactory(new PropertyValueFactory("title"));
+//    C2.setCellValueFactory(new PropertyValueFactory("artist"));
+//    C3.setCellValueFactory(new PropertyValueFactory("genre"));
+//    sb.loadSongs();
     }    
 
  
