@@ -8,7 +8,7 @@
     <update check="always"/>
     <resources>
         <j2se version="9.0.4+" href="http://java.sun.com/products/autodl/j2se"/>
-        <jar href="MyTunes2.jar" size="23509" download="eager"/>
+        <jar href="MyTunes2.jar" size="23592" download="eager"/>
         <jar href="lib\jaudiotagger-2.0.2.jar" size="785894" download="eager"/>
         <jar href="lib\jl1.0.1.jar" size="105363" download="eager"/>
         <jar href="lib\mssql-jdbc-6.3.6-SNAPSHOT.jre9-preview.jar" size="876102" download="eager"/>

@@ -17,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,10 +36,8 @@ public class FXMLController implements Initializable {
 
 private MediaPlayer mediaPlay;
     
+    
     @FXML
-    private Button knapsåmeget;
-    @FXML
-
     private TableColumn<Song, String> C1;
     @FXML
     private TableView<Song> songlist;
@@ -52,7 +49,16 @@ private MediaPlayer mediaPlay;
 * @param rb
 */
     private SongBLL sb;
-@Override
+    @FXML
+    private Button knapsåmeget1;
+    @FXML
+    private Button knapsåmeget2;
+    @FXML
+    private Button knapsåmeget3;
+    @FXML
+    private Button knapsåmeget4;
+
+    @Override
 public void initialize(URL url, ResourceBundle rb) {
   // songlist.setItems(sb.getAllSongs());
     C1.setCellValueFactory(new PropertyValueFactory("title"));
@@ -69,24 +75,19 @@ public void initialize(URL url, ResourceBundle rb) {
         mediaPlay.play();
     }  
    
-    @FXML
     public void Pause(ActionEvent event) {
         mediaPlay.pause();
     }
 
-    @FXML
     public void Stop(ActionEvent event) {
         mediaPlay.stop();
     }
-    @FXML
     public void Skip(ActionEvent event) {
         
     }
     
-    @FXML
     public void Previous(ActionEvent event) {
         
-
     }
 
 
