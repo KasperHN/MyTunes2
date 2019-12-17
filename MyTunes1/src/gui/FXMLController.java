@@ -63,7 +63,7 @@ public void initialize(URL url, ResourceBundle rb) {
     @FXML
     public void Knap(ActionEvent event)   
     {
-        String bip = "file:/C:/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Castille_Soap.mp3";
+        String bip = "file:/C:/Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Lulu_Is_the_Cat_I_Like_Best.mp3";
         Media hit = new Media(bip);
         mediaPlay = new MediaPlayer(hit);
         mediaPlay.play();
