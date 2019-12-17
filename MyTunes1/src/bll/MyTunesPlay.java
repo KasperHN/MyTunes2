@@ -53,7 +53,7 @@ public class MyTunesPlay extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-        Media pick = new Media("Users/chri9/OneDrive/Dokumenter/NetBeansProjects/MyTunes2/MyTunes1/Music/Castille_Soap.mp3"); // replace this with your own audio file
+        Media pick = new Media("Users/kaspe/Documents/GitHub/MyTunes2/MyTunes1/music/Lulu_Is_the_Cat_I_Like_Best.mp3"); // replace this with your own audio file
         MediaPlayer player = new MediaPlayer(pick);
 
         // Add a mediaView, to display the media. Its necessary !
