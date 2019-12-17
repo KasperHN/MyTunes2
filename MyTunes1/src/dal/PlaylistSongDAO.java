@@ -42,15 +42,15 @@ public class PlaylistSongDAO {
 //    /*
 //    Getter playlist køen Som laver playlist af sange.
 //     */
-//    public List<SongModel> getPlaylistSongs(int songid) {
-//        List<SongModel> newSongList = new ArrayList();
+//    public List<Song> getPlaylistSongs(int songid) {
+//        List<Song> newSongList = new ArrayList();
 //        try (Connection con = ds.getConnection()) {
 //            String query = "SELECT * FROM Playlist INNER JOIN Song ON PlaylistSong.songid = Song.id WHERE PlaylistSong.PlaylistID = ? ORDER by locationInListID desc"; // Henter alle sange fra en playliste
 //            PreparedStatement preparedStmt = con.prepareStatement(query);
 //            preparedStmt.setInt(1, songid);
 //            ResultSet rs = preparedStmt.executeQuery();
 //            while (rs.next()) {
-//                SongModel song = new SongModel(rs.getString("title"), rs.getString("artist"), rs.getString("genre"), rs.getString("songlocation"), rs.getInt("songid")); // Sets up a song object
+//                Song song = new Song(rs.getString("title"), rs.getString("artist"), rs.getString("genre"), rs.getString("songlocation"), rs.getInt("songid")); // Sets up a song object
 //                song.setLocationInList(rs.getInt("locationInListID")); // indsætter int lister locationer.
 //                newSongList.add(song); //Tilføjer sange til sang array listen.
 //            }

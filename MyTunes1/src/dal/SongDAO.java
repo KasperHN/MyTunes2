@@ -80,7 +80,7 @@ public class SongDAO {
             String sql = "INSERT INTO Song(songid, artist, title, genre, songlocation) VALUES (?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
            
-            ps.setString(1, song.getTitle());
+            ps.setInt(1, song.getSongid());
             ps.setString(2, song.getArtist());
             ps.setString(3, song.getTitle());
             ps.setString(4, song.getGenre());
