@@ -1,18 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLController">
    <children>
-      <Button fx:id="knapsåmeget" layoutX="152.0" layoutY="111.0" mnemonicParsing="false" onAction="#Knap" text="Button" />
-      <TableView fx:id="songlist" layoutX="14.0" layoutY="186.0" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="songlist" layoutX="-2.0" layoutY="59.0" prefHeight="341.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="C1" prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="C1" prefWidth="302.40003049373627" text="C1" />
+          <TableColumn minWidth="0.0" prefWidth="297.5998840332031" text="C2" />
         </columns>
       </TableView>
+      <ButtonBar layoutX="5.0" layoutY="7.0" prefHeight="38.0" prefWidth="580.0">
+         <buttons>
+            <Button fx:id="knapsåmeget1" mnemonicParsing="false" onAction="#Knap" prefHeight="26.0" prefWidth="151.0" text="Previous">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+            <Button fx:id="knapsåmeget2" minWidth="27.0" mnemonicParsing="false" onAction="#Knap" prefHeight="26.0" text="Stop" textFill="#cf1414">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+            <Button fx:id="knapsåmeget" mnemonicParsing="false" onAction="#Knap" text="Play" textFill="#090caa">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+            <Button fx:id="knapsåmeget3" mnemonicParsing="false" onAction="#Knap" text="Pause" textFill="#cf2424">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+            <Button fx:id="knapsåmeget4" mnemonicParsing="false" onAction="#Knap" prefHeight="26.0" prefWidth="38.0" text="Skip">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Button>
+         </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>
